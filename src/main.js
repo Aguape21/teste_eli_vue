@@ -2,10 +2,22 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 
-//Importar componentes que serão disponíveis de forma global
+//Importar componentes do tipo ferramentas que serão disponíveis de forma global
 
 import baseMenuPainel from './componentes/modelos/baseMenuPainel.vue'
 Vue.component('baseMenuPainel', baseMenuPainel)
+
+import centro from './componentes/modelos/centro.vue'
+Vue.component('centro', centro)
+
+//Importar componentes do tipo páginas
+import login from './paginas/login.vue'
+Vue.component('login', login)
+
+import publicoRelatorio from './paginas/publicoRelatorio.vue'
+Vue.component('publicoRelatorio', publicoRelatorio)
+
+
 
 
 

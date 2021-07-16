@@ -1,5 +1,5 @@
 <template>
-  <baseMenuPainel />
+  <publicoRelatorio />
 </template>
 
 <script>
