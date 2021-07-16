@@ -30,6 +30,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Material Components Vue
 
 - https://matsp.github.io/material-components-vue/components/
+- https://v2.vuetifyjs.com/en/getting-started/pre-made-layouts/
+
 
 Material Design Framework 
 
