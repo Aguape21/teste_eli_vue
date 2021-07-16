@@ -1,9 +1,13 @@
 <template>
-  <div id="app">oi!</div>
+  <publicoRelatorio />
 </template>
 
 <script>
-export default {}
-</script>
+export default {
+  name: 'App',
 
-<style></style>
+  components: {},
+
+  data: () => ({}),
+}
+</script>

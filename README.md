@@ -24,7 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-Bibliotecas de componentes
+## Bibliotecas de componentes
 
 vue add vuetify
 
@@ -33,3 +33,17 @@ vue add vuetify
 ENOSPC: System limit for number of file watchers reached
 comando
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+Material Components Vue
+
+- https://matsp.github.io/material-components-vue/components/
+- https://v2.vuetifyjs.com/en/getting-started/pre-made-layouts/
+
+
+Material Design Framework 
+
+- https://vuetifyjs.com/en/
+
+Vue Material
+
+- https://vuematerial.io/

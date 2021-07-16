@@ -1,3 +1,8 @@
 module.exports = {
-    publicPath: '' //publicPath: ''  permite que o deploy seja diretorio relativo
+    //publicPath: ''  permite que o deploy seja diretorio relativo
+    publicPath: '',
+
+    transpileDependencies: [
+      'vuetify'
+    ]
 };
