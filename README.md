@@ -24,6 +24,17 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-Bibliotecas de componentes
+## Bibliotecas de componentes
 
-vue add vuetify
+
+Material Components Vue
+
+- https://matsp.github.io/material-components-vue/components/
+
+Material Design Framework 
+
+- https://vuetifyjs.com/en/
+
+Vue Material
+
+- https://vuematerial.io/
