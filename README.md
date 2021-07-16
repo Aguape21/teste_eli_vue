@@ -27,3 +27,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Bibliotecas de componentes
 
 vue add vuetify
+
+
+/Corrigir erro no desenvolvimento
+ENOSPC: System limit for number of file watchers reached
+comando
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
