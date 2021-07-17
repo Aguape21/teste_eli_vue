@@ -4,15 +4,15 @@ import vuetify from './plugins/vuetify'
 
 //Importar componentes do tipo ferramentas que serão disponíveis de forma global
 
-import baseMenuPainel from './componentes/modelos/baseMenuPainel.vue'
-Vue.component('baseMenuPainel', baseMenuPainel)
+import eli_baseMenuPainel from './componentes/modelos/eli-baseMenuPainel.vue'
+Vue.component('eli-baseMenuPainel', eli_baseMenuPainel)
 
-import centro from './componentes/modelos/centro.vue'
-Vue.component('centro', centro)
+import eli_centro from './componentes/modelos/eli-centro.vue'
+Vue.component('eli-centro', eli_centro)
 
 //Importar componentes do tipo páginas
-import login from './paginas/login.vue'
-Vue.component('login', login)
+import eli_login from './paginas/eli-login.vue'
+Vue.component('eli-login', eli_login)
 
 import publicoRelatorio from './paginas/publicoRelatorio.vue'
 Vue.component('publicoRelatorio', publicoRelatorio)
