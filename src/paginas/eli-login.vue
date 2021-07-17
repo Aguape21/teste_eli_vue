@@ -33,7 +33,15 @@
   </eli-centro>
 </template>
 
-<script></script>
+<script>
+import eli_centro from '../componentes/modelos/eli-centro.vue'
+
+export default {
+  components: {
+    'eli-centro': eli_centro,
+  },
+}
+</script>
 
 <style>
 #logo {

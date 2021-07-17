@@ -1,5 +1,5 @@
 <template>
-  <publicoRelatorio />
+   <router-view/>
 </template>
 
 <script>
