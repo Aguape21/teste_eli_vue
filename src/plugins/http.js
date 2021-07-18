@@ -1,7 +1,5 @@
 import axios from 'axios'
-var urljoin = require('url-join');
-
-
+var urljoin = require('url-join')
 
 //monta a url para consulta
 const montarUrl = (caminho) =>
@@ -9,7 +7,7 @@ const montarUrl = (caminho) =>
   caminho.toLocaleLowerCase().startsWith('https://')
     ? caminho
     : urljoin(process.env.VUE_APP_API_BASE_URL, caminho)
- 
+
 //retorna uma consulta do tipo GET
 export const get = (caminho) =>
   new Promise((resposta, erro) => {
@@ -49,13 +47,16 @@ export const post = (caminho, objeto) =>
 export const graphql = (query, publico) =>
   new Promise((resposta, erro) => {
     try {
-      debugger
+      //remover espaços
+      query = query.replace(/\s+/gm, ' ')
+
       const caminho = !publico
         ? '/consultas/graphql' //consulta graphql com login
         : '/consultas/publico/graphql' //consulta grapql pública
 
-      post(caminho,query).then(function (response) {
-          resposta(response)
+      post(caminho, { query })
+        .then(function (response) {
+          resposta(response.data.data)
         })
         .catch(function (erro_post) {
           erro(erro_post)

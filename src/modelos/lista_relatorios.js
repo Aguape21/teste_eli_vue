@@ -2,9 +2,13 @@
 
 import Modelo from './modelo'
 
-export default class Relatorios extends Modelo {
+export default class ListaRelatorios extends Modelo {
+
+
+
   constructor(objeto) {
     super(objeto)
-    this._recurso = 'relatorios'
+    this._recurso = 'lista_relatorios'
+
   }
 }

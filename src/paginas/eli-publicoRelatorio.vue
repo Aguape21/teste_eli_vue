@@ -1,13 +1,13 @@
 <!--
-#/publico/relatorios/5d750d15-c31b-47d8-8984-a20fe5723895
+localhost:8080/#/publico/relatorios/08fe691b-9f5b-4d05-9685-3b7ad6e1c6a2
 -->
 <template>
-  <eli-centro></eli-centro>
+  <eli-centro>{{ listaRelatorios.descricao }}</eli-centro>
 </template>
 
 <script>
 import eli_centro from '../componentes/modelos/eli-centro.vue'
-import Relatorios from '../modelos/relatorios'
+import ListaRelatorios from '../modelos/lista_relatorios'
 
 export default {
   components: {
@@ -16,19 +16,26 @@ export default {
   data: function () {
     return {
       codigoRelatorio: '',
+      listaRelatorios: {},
     }
   },
   created: function () {
-    debugger
-    console.log(process.env)
     this.codigoRelatorio = this.$route.params.codigo
     this.carregarRelatorio()
   },
 
   methods: {
-    carregarRelatorio() {
-      this.relatorio = new Relatorios()
-      this.relatorio.abrir()
+    async carregarRelatorio() {
+      this.listaRelatorios = await new ListaRelatorios().abrir(
+        this.codigoRelatorio,
+        ` codigo
+        descricao
+        nome_arquivo
+        nome_usuario_inclusao
+        codigos_relatorios_anexos
+        codigo_usuario_alteracao`,
+        true,
+      )
     },
   },
 }
