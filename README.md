@@ -47,3 +47,21 @@ Material Design Framework
 Vue Material
 
 - https://vuematerial.io/
+
+
+
+## Exemplos
+
+´´´
+new Promise( async (resposta, erro) => {
+try {
+  resposta(true)
+} catch (erro_try) {
+  erro(erro_try)
+}
+})
+´´´
+
+´´´
+ <template> <div>{{teste}}</div> </template> <script> import componente from 'componente.vue' export default { components: { 'componente': componente, }, data: function () { return { teste: true, }; }, created: function () { this.mudarTeste(); }, methods: { mudarTeste() {this.teste = false}, }, } </script> <style> </style> 
+´´´
