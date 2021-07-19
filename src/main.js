@@ -3,9 +3,14 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './rotas/rotas'
 import dotenv from 'dotenv'
+import InstalarCarregando from './plugins/carregando'
+
+
 dotenv.config()
 
 Vue.config.productionTip = false
+
+Vue.use(InstalarCarregando);
 
 new Vue({
   vuetify,
