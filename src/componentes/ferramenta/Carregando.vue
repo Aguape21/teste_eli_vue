@@ -9,7 +9,9 @@
   >
     <component v-if="customLoader" v-bind:is="customLoader"></component>
     <div v-else>
-      <div class="loading-circle"></div>
+      <div>
+        <img id="gif" src="~@/assets/imagens/quero-quero.gif" alt="">
+      </div>
       <p class="loading-text">{{ text }}</p>
     </div>
   </div>
@@ -37,6 +39,13 @@ export default {
 }
 </script>
 <style scoped>
+
+  #gif{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
 .loading-screen {
   display: flex;
   align-items: center;
@@ -60,9 +69,11 @@ export default {
 }
 .loading-text {
   margin-top: 15px;
-  color: #808080;
-  font-size: 12px;
+  color: #ffffff;
+  font-size: 14px;
   text-align: center;
+  font-weight: bold;
+
 }
 @keyframes circleanimation {
   from {

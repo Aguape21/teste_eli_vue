@@ -5,6 +5,10 @@ import router from './rotas/rotas'
 import dotenv from 'dotenv'
 import InstalarCarregando from './plugins/carregando'
 
+//carregado pacote de fontes
+require('typeface-roboto')
+import '@/assets/css/global.css'
+
 
 dotenv.config()
 

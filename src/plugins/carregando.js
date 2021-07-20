@@ -8,7 +8,7 @@ this.carregando(false)
 
 const configuracaoCarregando = {
   dark: true, // default false
-  text: 'Carregando ...', // default 'Carregando'
+  text: 'Aguarde ...', // default 'Carregando'
   loading: true, // default false
   //customLoader: myVueComponent, // replaces the spinner and text with your own
   //background: 'rgb(255,255,255)', // set custom background
