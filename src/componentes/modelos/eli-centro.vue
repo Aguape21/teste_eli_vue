@@ -2,11 +2,9 @@
   <v-app id="inspire">
     <v-app id="inspire">
       <v-main>
-        <v-container class="fill-height" fluid>
+        <v-container fluid>
           <v-row align="center" justify="center">
-            <v-col cols="12" sm="8" md="4">
-              <slot />
-            </v-col>
+            <slot />
           </v-row>
         </v-container>
       </v-main>

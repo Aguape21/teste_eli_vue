@@ -1,20 +1,31 @@
 import Vue from 'vue'
+Vue.config.productionTip = false
+
+//Carregar variáveis ambiente
+import dotenv from 'dotenv'
+dotenv.config()
+
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './rotas/rotas'
-import dotenv from 'dotenv'
+
 import InstalarCarregando from './plugins/carregando'
+Vue.use(InstalarCarregando)
 
 //carregado pacote de fontes
 require('typeface-roboto')
 import '@/assets/css/global.css'
 
+//bootstrap
 
-dotenv.config()
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import '@/assets/css/personalizacaoBootstrap.scss'
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
-Vue.config.productionTip = false
-
-Vue.use(InstalarCarregando);
+//carregar funcoes de momentJS
+import momentJS from './plugins/momentJS'
+momentJS(Vue)
 
 new Vue({
   vuetify,

@@ -1,5 +1,7 @@
 import axios from 'axios'
-var urljoin = require('url-join')
+const urljoin = require('url-join')
+const fileDownload = require('js-file-download')
+const mime = require('mime-types')
 
 //monta a url para consulta
 const montarUrl = (caminho) =>
@@ -61,6 +63,38 @@ export const graphql = (query, publico) =>
         .catch(function (erro_post) {
           erro(erro_post)
         })
+    } catch (erro_try) {
+      erro(erro_try)
+    }
+  })
+
+//baixa um arquivo
+export const baixar = (url, nome, abrirNovaGuia) =>
+  new Promise((resposta, erro) => {
+    try {
+
+      //caso não receba nome, extrai da URL
+      if (!nome || nome == '') {
+        nome = url.split('/').pop().split('?')[0];
+      }
+      
+      axios({
+        url: url,
+        method: 'GET',
+        responseType: 'blob',
+      }).then((response) => {
+        if (abrirNovaGuia) {
+          const file = new Blob([response.data], {
+            type: mime.contentType(nome) || 'application/octet-stream',
+          })
+          const fileURL = URL.createObjectURL(file)
+          window.open(fileURL, '_blank')
+        } else {
+          fileDownload(response.data, nome)
+        }
+
+        resposta(true)
+      })
     } catch (erro_try) {
       erro(erro_try)
     }
