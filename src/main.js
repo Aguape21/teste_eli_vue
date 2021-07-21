@@ -18,10 +18,12 @@ import '@/assets/css/global.css'
 
 //bootstrap
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin, BootstrapVueIcons} from 'bootstrap-vue'
 import '@/assets/css/personalizacaoBootstrap.scss'
+import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(BootstrapVueIcons)
 
 //carregar funcoes de momentJS
 import momentJS from './plugins/momentJS'

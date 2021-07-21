@@ -28,43 +28,54 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
             ></b-img>
           </b-col>
           <b-col cols="9">
-            <h2>{{ listaRelatorios.descricao }}</h2>
+            <b-row>
+              <b-col cols="12">
+                <h2>{{ listaRelatorios.descricao }}</h2>
 
-            <p>
-              {{ listaRelatorios.descricao }}
-            </p>
-            Criado por
-            <b>{{ listaRelatorios.nome_usuario_inclusao }}</b>
-            em
-            <b>{{ paraDataHoraLocal(listaRelatorios.data_hora_inclusao) }}</b>
+                <p>
+                  {{ listaRelatorios.descricao }}
+                </p>
+                Criado por
+                <b>{{ listaRelatorios.nome_usuario_inclusao }}</b>
+                em
+                <b>
+                  {{ paraDataHoraLocal(listaRelatorios.data_hora_inclusao) }}
+                </b>
+              </b-col>
+            </b-row>
+
+            <b-row>
+              <b-col cols="12">
+                <b-button-group>
+                  <b-button
+                    @click="carregando(listaRelatorios.baixar(false))"
+                    variant="primary"
+                  >
+                    <b-icon icon="cloud-download"></b-icon>
+                    Baixar
+                  </b-button>
+                  <b-button
+                    @click="carregando(listaRelatorios.baixar(true))"
+                    variant="primary"
+                  >
+                    <b-icon icon="eye"></b-icon>
+                    Abrir
+                  </b-button>
+                </b-button-group>
+              </b-col>
+            </b-row>
           </b-col>
         </b-row>
 
-        <b-row v-if="listaRelatorios">
-          <b-col cols="6">
-            <b-button
-              @click="carregando(listaRelatorios.baixar(false))"
-              class="m-2"
-              variant="primary"
-            >
-              Baixar Relatório
-            </b-button>
-          </b-col>
-          <b-col cols="6">
-            <b-button
-              @click="carregando(listaRelatorios.baixar(true))"
-              class="m-2"
-              variant="primary"
-            >
-              Abrir Relatório
-            </b-button>
-          </b-col>
-        </b-row>
-
-        <b-row v-if="listaRelatorios">
-          <p v-for="a in anexos" :key="a.codigo">
-            {{ a.titulo }}
-          </p>
+        <b-row v-if="anexos">
+          <b-container>
+            <h3>Anexos:</h3>
+            <eli-ListaRelatoriosAnexos
+              v-for="a in anexos"
+              :key="a.codigo"
+              :objeto="a"
+            ></eli-ListaRelatoriosAnexos>
+          </b-container>
         </b-row>
       </b-container>
     </div>
@@ -74,6 +85,8 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
 <script>
 //template de página
 import eli_centro from '../componentes/modelos/eli-centro.vue'
+//template de linha de anexo
+import eli_ListaRelatoriosAnexos from '../componentes/recursos/eli-ListaRelatoriosAnexos.vue'
 //modelo de objeto
 import ListaRelatorios from '../modelos/lista_relatorios'
 //modelo anexos
@@ -82,6 +95,7 @@ import { abrirVariosPorCodigo } from '../modelos/lista_relatorios_anexos'
 export default {
   components: {
     'eli-centro': eli_centro,
+    'eli-ListaRelatoriosAnexos': eli_ListaRelatoriosAnexos,
   },
   data: function () {
     return {

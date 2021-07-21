@@ -49,6 +49,13 @@ Vue Material
 - https://vuematerial.io/
 
 
+Componente para botão flutuante
+https://www.npmjs.com/package/vue-float-action-button
+
+
+manual de icones
+https://bootstrap-vue.org/docs/icons
+
 
 ## Exemplos
 
