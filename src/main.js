@@ -18,7 +18,7 @@ import '@/assets/css/global.css'
 
 //bootstrap
 
-import { BootstrapVue, IconsPlugin, BootstrapVueIcons} from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from 'bootstrap-vue'
 import '@/assets/css/personalizacaoBootstrap.scss'
 import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
 Vue.use(BootstrapVue)
@@ -28,6 +28,16 @@ Vue.use(BootstrapVueIcons)
 //carregar funcoes de momentJS
 import momentJS from './plugins/momentJS'
 momentJS(Vue)
+
+//rastreio google analytcs
+import VueGtag from 'vue-gtag'
+Vue.use(
+  VueGtag,
+  {
+    config: { id: 'UA-88695113-4' },
+  },
+  router,
+)
 
 new Vue({
   vuetify,

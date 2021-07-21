@@ -5,12 +5,14 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
   <eli-centro>
     <div>
       <div id="quadro-logo" style="">
-        <img
-          style="max-width: 220px;"
-          id="logo"
-          src="~@/assets/imagens/logonome.png"
-          alt=""
-        />
+        <router-link :to="{ name: 'login' }">
+          <img
+            style="width: 220px;"
+            id="logo"
+            src="~@/assets/imagens/logonome.png"
+            alt=""
+          />
+        </router-link>
       </div>
 
       <b-container id="painel">

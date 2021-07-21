@@ -11,14 +11,18 @@ const routes = [
   //página de login
   {
     path: '/',
-    name: 'Login',
+    name: 'login',
     component: eli_login,
+    beforeEnter: () => {
+      //ainda não inplantado, envia para tela inicial
+      window.location.href = 'https://app.e-licencie.com.br/'
+    },
   },
 
   //página de relatórios publicos
   {
     path: '/publico/relatorios/:codigo',
-    name: 'PublicoRelatorios',
+    name: 'publicoRelatorios',
     component: eli_publicoRelatorio,
   },
 ]
