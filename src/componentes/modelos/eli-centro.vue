@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app>
     <v-app id="inspire">
       <v-main>
         <v-container fluid>
@@ -21,6 +21,10 @@ export default {
 <style scoped>
 #inspire {
   background-image: url('~@/assets/imagens/papelparede.jpg');
-  background-size: 100%;
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 </style>

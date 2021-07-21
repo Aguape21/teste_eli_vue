@@ -15,6 +15,7 @@
     "js-file-download": "^0.4.12",
     "mime-types": "^2.1.31",
     "moment": "^2.29.1",
+    "pretty-file-icons": "^2.2.1",
     "typeface-roboto": "^1.1.13",
     "url-join": "^4.0.1",
     "vue": "^2.6.11",

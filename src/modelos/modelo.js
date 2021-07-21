@@ -7,7 +7,8 @@ export default class Modelo {
   // usada para fazer as conexões com a API
   _recurso = ''
 
-  _query_abrir = ''
+  _colunas=''
+
 
   //contrução da classe com o objeto
   constructor(objeto) {
@@ -41,13 +42,13 @@ export default class Modelo {
   }
 
   //Baixa/abre um recuros pelo código
-  abrir = async (codigo, colunas, publico) => {
+  abrir = async (codigo, publico) => {
 
     const query = `{
       ${this._recurso}(codigo:"${codigo}"){
-        ${(typeof colunas == 'string'
-          ? colunas.trim().split(/[\s,;]+/gm)
-          : colunas
+        ${(typeof this._colunas  == 'string'
+          ? this._colunas.trim().split(/[\s,;]+/gm)
+          : this._colunas
         ).join(', ')}
       }
       }`

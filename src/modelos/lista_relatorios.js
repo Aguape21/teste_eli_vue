@@ -4,9 +4,19 @@ import Modelo from './modelo'
 import { baixar } from '../plugins/http'
 
 export default class ListaRelatorios extends Modelo {
+  _recurso = 'lista_relatorios'
+  _colunas = ` codigo
+                codigo_corporativo
+                descricao
+                nome_arquivo
+                nome_usuario_inclusao
+                codigos_relatorios_anexos
+                codigo_usuario_alteracao
+                data_hora_inclusao
+`
+
   constructor(objeto) {
     super(objeto)
-    this._recurso = 'lista_relatorios'
   }
 
   baixar = (novaGuia) => {
