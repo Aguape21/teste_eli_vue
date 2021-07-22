@@ -39,6 +39,13 @@ Vue.use(
   router,
 )
 
+//auto tutorial
+import VueTour from 'vue-tour'
+require('vue-tour/dist/vue-tour.css')
+Vue.use(VueTour)
+
+
+
 new Vue({
   vuetify,
   router,
