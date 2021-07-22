@@ -1,4 +1,12 @@
 $primary: #688c00 !default;
+//$secondary: $gray-600 !default;
+$success: #f9df48 !default;
+$info: #247373 !default;
+$warning: #f9a354 !default;
+$danger: #fe5252 !default;
+//$light: $gray-100 !default;
+//$dark: $gray-800 !default;
+
 
 // Then import Bootstrap an BootstrapVue SCSS files (order is important)
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
