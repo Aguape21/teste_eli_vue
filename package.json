@@ -2,6 +2,10 @@
   "name": "e-licencie-vue",
   "version": "2.1.1",
   "private": true,
+  "author": {
+    "name": "AZTECA SOFTWARE LTDA",
+    "email": "adm@e-licencie.com.br"
+  },
   "scripts": {
     "serve": "vue-cli-service serve --port 9000",
     "build": "vue-cli-service build",
