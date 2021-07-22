@@ -16,6 +16,11 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
       </div>
 
       <b-container id="painel">
+        <eli-botaoAjuda
+          :componente="'relatorios'"
+          :tutorial="tutorial"
+        ></eli-botaoAjuda>
+
         <b-row v-if="erro">
           <b-col cols="12">
             <b-alert show variant="danger">{{ erro }}</b-alert>
@@ -50,6 +55,7 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
               <b-col cols="12">
                 <b-button-group>
                   <b-button
+                    class="aj-baixar-relatorio"
                     @click="carregando(listaRelatorios.baixar(false))"
                     variant="primary"
                   >
@@ -57,6 +63,7 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
                     Baixar
                   </b-button>
                   <b-button
+                    class="aj-ver-relatorio"
                     @click="carregando(listaRelatorios.baixar(true))"
                     variant="primary"
                   >
@@ -69,7 +76,7 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
           </b-col>
         </b-row>
 
-        <b-row v-if="anexos">
+        <b-row v-if="anexos" class="aj-lista-anexos">
           <b-container>
             <h3>Anexos:</h3>
             <eli-ListaRelatoriosAnexos
@@ -93,11 +100,14 @@ import eli_ListaRelatoriosAnexos from '../componentes/recursos/eli-ListaRelatori
 import ListaRelatorios from '../modelos/lista_relatorios'
 //modelo anexos
 import { abrirVariosPorCodigo } from '../modelos/lista_relatorios_anexos'
+//botao de ajuda
+import botaoAjuda from '../componentes/ferramenta/eli-botaoAjuda.vue'
 
 export default {
   components: {
     'eli-centro': eli_centro,
     'eli-ListaRelatoriosAnexos': eli_ListaRelatoriosAnexos,
+    'eli-botaoAjuda': botaoAjuda,
   },
   data: function () {
     return {
@@ -105,6 +115,45 @@ export default {
       listaRelatorios: null,
       anexos: null,
       erro: null,
+      tutorial: [
+        {
+          target: '.aj-baixar-relatorio',
+          header: {
+            title: 'Baixar relatório',
+          },
+          content: `Clique aqui para baixar versão em PDF do relatórios.`,
+                  params: {
+              placement: 'top'
+            }
+        },
+
+        {
+          target: '.aj-ver-relatorio',
+          header: {
+            title: 'Ver relatório',
+          },
+          content: `Clique aqui para ver relatório em nova guia.`,
+                  params: {
+              placement: 'top'
+            }
+        },
+
+        {
+          target: '.aj-lista-anexos',
+          header: {
+            title: 'Anexos do relatório',
+          },
+          content: `Lista de anexos que integram o relatório.`,
+
+        params: {
+              placement: 'top'
+            }
+
+        },
+
+
+        
+      ],
     }
   },
   created: function () {
