@@ -122,9 +122,9 @@ export default {
             title: 'Baixar relatório',
           },
           content: `Clique aqui para baixar versão em PDF do relatórios.`,
-                  params: {
-              placement: 'top'
-            }
+          params: {
+            placement: 'top',
+          },
         },
 
         {
@@ -133,9 +133,9 @@ export default {
             title: 'Ver relatório',
           },
           content: `Clique aqui para ver relatório em nova guia.`,
-                  params: {
-              placement: 'top'
-            }
+          params: {
+            placement: 'top',
+          },
         },
 
         {
@@ -145,14 +145,10 @@ export default {
           },
           content: `Lista de anexos que integram o relatório.`,
 
-        params: {
-              placement: 'top'
-            }
-
+          params: {
+            placement: 'top',
+          },
         },
-
-
-        
       ],
     }
   },
@@ -170,9 +166,14 @@ export default {
         true,
       )
 
-      this.anexos = await abrirVariosPorCodigo(
-        this.listaRelatorios.codigos_relatorios_anexos,
-      )
+      if (
+        this.listaRelatorios.codigos_relatorios_anexos &&
+        this.listaRelatorios.codigos_relatorios_anexos.length > 0
+      ) {
+        this.anexos = await abrirVariosPorCodigo(
+          this.listaRelatorios.codigos_relatorios_anexos,
+        )
+      }
     },
   },
 }
