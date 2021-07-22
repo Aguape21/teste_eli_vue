@@ -2,7 +2,7 @@
 
 import Modelo from './modelo'
 import { baixar } from '../plugins/http'
-import { graphql } from '../plugins/http'
+import api from '../plugins/api'
 
 export default class ListaRelatoriosAnexos extends Modelo {
   _recurso = 'lista_relatorios_anexos'
@@ -36,7 +36,7 @@ const abrirVariosPorCodigo = async (codigos) => {
 
 
 
-  const busca = await graphql(query, true)
+  const busca = await api.graphql(query, true)
 
   return Object.values(busca).map((a) => new ListaRelatoriosAnexos(a))
 }

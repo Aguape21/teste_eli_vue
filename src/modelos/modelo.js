@@ -1,15 +1,13 @@
 //Modelo padrão para classes relacionadas à recursos
 
-import { graphql } from '../plugins/http'
+import api from '../plugins/api'
 
 export default class Modelo {
   //indica o recurso da classe
   // usada para fazer as conexões com a API
   _recurso = ''
 
-  _colunas=''
-
-
+  _colunas = ''
   //contrução da classe com o objeto
   constructor(objeto) {
     this.objeto = objeto || {}
@@ -43,16 +41,16 @@ export default class Modelo {
 
   //Baixa/abre um recuros pelo código
   abrir = async (codigo, publico) => {
-
     const query = `{
       ${this._recurso}(codigo:"${codigo}"){
-        ${(typeof this._colunas  == 'string'
+        ${(typeof this._colunas == 'string'
           ? this._colunas.trim().split(/[\s,;]+/gm)
           : this._colunas
         ).join(', ')}
       }
       }`
-    const busca = await graphql(query, publico)
+
+    const busca = await api.graphql(query, publico)
 
     //retona erro de não encotrado
     if (!busca[this._recurso]) {
@@ -63,6 +61,6 @@ export default class Modelo {
 
     this.objeto = busca[this._recurso]
 
-    return this;
+    return this
   }
 }
