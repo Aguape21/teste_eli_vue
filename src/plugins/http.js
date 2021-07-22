@@ -8,7 +8,7 @@ const cabecalho = () => {
 
   const ls = (chave) => {
     let valor = localStorage.getItem('ngStorage-' + chave)
-    return valor.replace(/"/gm,'')
+    return valor ? valor.replace(/"/gm, '') : valor
   }
 
   const saida = {
