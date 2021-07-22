@@ -13,10 +13,12 @@ const routes = [
     path: '/',
     name: 'login',
     component: eli_login,
-    beforeEnter: () => {
+    beforeEnter: (to, from, next) => {
       //ainda não inplantado, envia para tela inicial
       if (process.env.NODE_ENV == 'production') {
         window.location.href = 'https://app.e-licencie.com.br/'
+      } else {
+        next()
       }
     },
   },

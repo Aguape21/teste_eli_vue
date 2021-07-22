@@ -20,16 +20,15 @@ import Carregando from '../componentes/ferramenta/Carregando.vue'
 let vm = {}
 
 const InstalarCarregando = {
-  install(Vue) {
+  install(Vue) { 
     const loadingPlugin = Vue.extend(Carregando)
     vm = new loadingPlugin({
       data: configuracaoCarregando,
     }).$mount()
+
     document.body.appendChild(vm.$el)
-     Vue.prototype.carregando = (fn) => {
-
-
-
+    vm.loading = false
+    Vue.prototype.carregando = (fn) => {
       if (fn == true) {
         vm.loading = true
         return true
