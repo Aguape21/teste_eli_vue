@@ -3,6 +3,23 @@ const urljoin = require('url-join')
 const fileDownload = require('js-file-download')
 const mime = require('mime-types')
 
+const cabecalho = () => {
+  //essa parte para permitir a migração de versões
+
+  const ls = (chave) => {
+    let valor = localStorage.getItem('ngStorage-' + chave)
+    return valor.replace(/"/gm,'')
+  }
+
+  const saida = {
+    'Content-type': 'application/json',
+    Authorization: 'Bearer ' + ls('bearer') || '',
+    CodigoCorporativo: 'CodigoCorporativo ' + ls('codigoCorporativo') || '',
+    CodigoUsuario: 'CodigoUsuario ' + ls('codigoUsuario') || '',
+  }
+  return saida
+}
+
 //monta a url para consulta
 const montarUrl = (caminho) =>
   caminho.toLocaleLowerCase().startsWith('http://') ||
@@ -14,8 +31,11 @@ const montarUrl = (caminho) =>
 export const get = (caminho) =>
   new Promise((resposta, erro) => {
     try {
-      axios
-        .get(montarUrl(caminho))
+      axios({
+        method: 'GET',
+        url: montarUrl(caminho),
+        headers: cabecalho(),
+      })
         .then(function (response) {
           resposta(response)
         })
@@ -31,8 +51,12 @@ export const get = (caminho) =>
 export const post = (caminho, objeto) =>
   new Promise((resposta, erro) => {
     try {
-      axios
-        .post(montarUrl(caminho), objeto)
+      axios({
+        method: 'POST',
+        url: montarUrl(caminho),
+        data: objeto,
+        headers: cabecalho(),
+      })
         .then(function (response) {
           resposta(response)
         })
@@ -72,12 +96,11 @@ export const graphql = (query, publico) =>
 export const baixar = (url, nome, abrirNovaGuia) =>
   new Promise((resposta, erro) => {
     try {
-
       //caso não receba nome, extrai da URL
       if (!nome || nome == '') {
-        nome = url.split('/').pop().split('?')[0];
+        nome = url.split('/').pop().split('?')[0]
       }
-      
+
       axios({
         url: url,
         method: 'GET',

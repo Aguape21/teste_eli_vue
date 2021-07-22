@@ -15,7 +15,9 @@ const routes = [
     component: eli_login,
     beforeEnter: () => {
       //ainda não inplantado, envia para tela inicial
-      window.location.href = 'https://app.e-licencie.com.br/'
+      if (process.env.NODE_ENV == 'production') {
+        window.location.href = 'https://app.e-licencie.com.br/'
+      }
     },
   },
 
