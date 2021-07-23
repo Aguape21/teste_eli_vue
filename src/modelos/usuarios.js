@@ -1,8 +1,8 @@
 //Conexão com o recurso de usuarios
 
 import Modelo from './modelo'
-
 import api from '../plugins/api'
+import autenticacao from '../plugins/autenticacao'
 
 export default class Usuarios extends Modelo {
   _recurso = 'usuarios'
@@ -32,14 +32,8 @@ export default class Usuarios extends Modelo {
 
     this.objeto = r[0]
 
-    const lsSet = (chave, valor) => {
-      localStorage.setItem('ngStorage-' + chave, `"${valor}"`)
-    }
-    debugger
-
-    lsSet('bearer', this.bearer)
-    lsSet('codigoCorporativo', this.codigo_corporativo)
-    lsSet('codigoUsuario', this.codigo)
+    //gravar dados de autenticação
+    autenticacao.gravar(this.bearer, this.codigo_corporativo, this.codigo)
 
     return this
   }

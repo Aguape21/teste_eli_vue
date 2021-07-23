@@ -17,6 +17,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "js-file-download": "^0.4.12",
+    "jwt-decode": "^3.1.2",
     "mime-types": "^2.1.31",
     "moment": "^2.29.1",
     "pretty-file-icons": "^2.2.1",

@@ -31,20 +31,20 @@ momentJS(Vue)
 
 //rastreio google analytcs
 import VueGtag from 'vue-gtag'
-Vue.use(
-  VueGtag,
-  {
-    config: { id: 'UA-88695113-4' },
-  },
-  router,
-)
+if (process.env.NODE_ENV == 'production') {
+  Vue.use(
+    VueGtag,
+    {
+      config: { id: 'UA-88695113-4' },
+    },
+    router,
+  )
+}
 
 //auto tutorial
 import VueTour from 'vue-tour'
 require('vue-tour/dist/vue-tour.css')
 Vue.use(VueTour)
-
-
 
 new Vue({
   vuetify,

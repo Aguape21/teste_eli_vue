@@ -1,6 +1,7 @@
 //Biblioteca de conexão com API
 
 import { post, get } from './http.js'
+import autenticacao from './autenticacao.js'
 const urljoin = require('url-join')
 
 class API {
@@ -11,16 +12,12 @@ class API {
     //essa parte para permitir a migração de versões
     //cabelhalho com cados de autenticação
 
-    const ls = (chave) => {
-      let valor = localStorage.getItem('ngStorage-' + chave)
-      return valor ? valor.replace(/"/gm, '') : valor
-    }
-
     const saida = {
       'Content-type': 'application/json',
-      Authorization: 'Bearer ' + ls('bearer') || '',
-      CodigoCorporativo: 'CodigoCorporativo ' + ls('codigoCorporativo') || '',
-      CodigoUsuario: 'CodigoUsuario ' + ls('codigoUsuario') || '',
+      Authorization: 'Bearer ' + autenticacao.bearer || '',
+      CodigoCorporativo:
+        'CodigoCorporativo ' + autenticacao.codigoCorporativo || '',
+      CodigoUsuario: 'CodigoUsuario ' + autenticacao.codigoUsuario || '',
     }
     return saida
   }
@@ -68,7 +65,7 @@ class API {
   graphql = (query, publico) =>
     new Promise((resposta, erro) => {
       try {
-        debugger
+        
         //remover espaços
         query = query.replace(/\s+/gm, ' ')
 
