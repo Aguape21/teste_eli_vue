@@ -33,7 +33,11 @@ class API {
             resposta(response.data)
           })
           .catch(function (erro_post) {
-            erro(erro_post)
+            if (erro_post && erro_post.response && erro_post.response.data) {
+              erro(erro_post.response.data)
+            } else {
+              erro(erro_post)
+            }
           })
       } catch (erro_try) {
         erro(erro_try)
@@ -47,8 +51,12 @@ class API {
           .then(function (response) {
             resposta(response.data)
           })
-          .catch(function (erro_post) {
-            erro(erro_post)
+          .catch(function (erro_get) {
+            if (erro_get && erro_get.response && erro_get.response.data) {
+              erro(erro_get.response.data)
+            } else {
+              erro(erro_get)
+            }
           })
       } catch (erro_try) {
         erro(erro_try)
@@ -60,7 +68,7 @@ class API {
   graphql = (query, publico) =>
     new Promise((resposta, erro) => {
       try {
-          debugger
+        debugger
         //remover espaços
         query = query.replace(/\s+/gm, ' ')
 
