@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 //Importar componentes do tipo páginas
 import eli_login from '../paginas/eli-login.vue'
 import eli_publicoRelatorio from '../paginas/eli-publicoRelatorio.vue'
+import eli_passagem from '../paginas/eli-passagem.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,14 @@ const routes = [
     name: 'publicoRelatorios',
     component: eli_publicoRelatorio,
   },
+
+  //página de passagem para teste
+  {
+    path: '/passagem',
+    name: 'passagem',
+    component: eli_passagem,
+  },
+
 ]
 
 const router = new VueRouter({

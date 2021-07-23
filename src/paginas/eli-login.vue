@@ -64,6 +64,7 @@ export default {
         const usuario = await new Usuarios().login(this.email, this.senha)
         this.variantAlerta = this.variants.success
         this.mensagemAlerta = `Bem vindo(a) ${usuario.nome}.`
+        this.$router.push('passagem');
       } catch (error) {
         this.variantAlerta = this.variants.danger
         this.mensagemAlerta = error

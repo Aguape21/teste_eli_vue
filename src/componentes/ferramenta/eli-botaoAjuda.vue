@@ -35,7 +35,7 @@ export default {
     opcoes: {
       useKeyboardNavigation: true,
       labels: {
-        buttonSkip: 'Prular Tutorial',
+        buttonSkip: 'Pular Tutorial',
         buttonPrevious: 'Anterior',
         buttonNext: 'Próximo',
         buttonStop: 'Sair',
