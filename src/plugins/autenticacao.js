@@ -1,7 +1,5 @@
 //funcões relacionadas com a autenticação
 
-import jwt_decode from 'jwt-decode'
-
 class Autenticacao {
   #lsSet = (chave, valor) => {
     localStorage.setItem('ngStorage-' + chave, `"${valor}"`)
@@ -59,12 +57,8 @@ class Autenticacao {
     try {
       //virificar se tem bearer
 
-
       if (this.bearer || this.bearer != '') {
-        const dados = jwt_decode(this.bearer)
-        if (dados.exp > new Date().getTime() / 1000) {
-          return true
-        }
+        return true
       }
 
       this.limpar()

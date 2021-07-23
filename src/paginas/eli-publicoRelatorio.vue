@@ -93,7 +93,7 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
 
 <script>
 //template de página
-import eli_centro from '../componentes/modelos/eli-centro.vue'
+import eli_centro from '../componentes/retratos/eli-centro.vue'
 //template de linha de anexo
 import eli_ListaRelatoriosAnexos from '../componentes/recursos/eli-ListaRelatoriosAnexos.vue'
 //modelo de objeto
