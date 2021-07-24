@@ -8,14 +8,18 @@
           </v-row>
         </v-container>
       </v-main>
+       <eli-rodape></eli-rodape>
     </v-app>
-    <eli-rodape></eli-rodape>
+   
   </v-app>
 </template>
 
 <script>
 
+import eli_rodape from '../ferramenta/eli-rodape.vue'
+
 export default {
+  components:{'eli-rodape':eli_rodape},
   data: () => ({}),
 }
 </script>

@@ -48,8 +48,8 @@ Vue.use(VueTour)
 
 
 //icones
-import FontAwesomeIcon from './plugins/icones'
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+import OhVueIcon from './plugins/icones'
+Vue.component('oh-icon', OhVueIcon)
 
 new Vue({
   vuetify,

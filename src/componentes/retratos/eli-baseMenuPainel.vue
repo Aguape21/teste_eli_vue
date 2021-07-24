@@ -6,7 +6,7 @@
           <v-list dense>
             <v-list-item link>
               <v-list-item-action>
-                <font-awesome-icon icon="user-secret" />
+                <oh-icon name="fa-users" />
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>Home</v-list-item-title>
@@ -25,7 +25,7 @@
 
         <v-app-bar app color="primary" dark>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer">
-            <font-awesome-icon icon="bars" size="2x" />
+            <oh-icon name="fa-bars" />
           </v-app-bar-nav-icon>
 
           <v-toolbar-title>
@@ -37,7 +37,7 @@
           <v-menu left bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-app-bar-nav-icon v-bind="attrs" v-on="on">
-                <font-awesome-icon icon="user" size="2x" />
+                <oh-icon name="fa-user-edit" scale="1.5" />
               </v-app-bar-nav-icon>
 
               <v-toolbar-title>Luiz Silva</v-toolbar-title>
@@ -54,9 +54,7 @@
         <v-main>
           <v-container class="fill-height" fluid>
             <v-row align="center" justify="center">
-              <v-col style="min-height:500px" class="text-center">
-               
-
+              <v-col style="min-height: 500px;" class="text-center">
                 <v-tooltip left>
                   <template v-slot:activator="{ on }">
                     <v-btn :href="source" icon large target="_blank" v-on="on">
@@ -70,7 +68,6 @@
           </v-container>
         </v-main>
         <eli-rodape></eli-rodape>
-      
       </v-app>
     </v-app>
   </div>
@@ -85,7 +82,7 @@ export default {
 
   components: {
     'eli-logo': eli_logo,
-     'eli-rodape': eli_rodape,
+    'eli-rodape': eli_rodape,
   },
   props: {
     source: String,

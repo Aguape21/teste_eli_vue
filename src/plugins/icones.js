@@ -1,16 +1,28 @@
-//lista de icones
-// https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free
+/*
+        Gerenciar icones para a aplicação
+        Para adicionar um icone:
+            1. buscar aqui https://oh-vue-icons.netlify.app/
+            2. Adicionar no import e no add.
+            3. html=> <oh-icon name="bi-whatsapp" />
+*/
 
-//tutorial
-// https://github.com/FortAwesome/vue-fontawesome
+import OhVueIcon from 'oh-vue-icons'
 
+import {
+  BiWhatsapp,
+  FaUsers,
+  FaBars,
+  FaUserEdit,
+  RiCellphoneFill,
+  MdEmailOutlined,
+} from 'oh-vue-icons/icons'
+OhVueIcon.add(
+  BiWhatsapp, //name="bi-whatsapp"
+  FaUsers, //name="fa-users"
+  FaBars, //name="fa-bars"
+  FaUserEdit, //name="fa-user-edit"
+  RiCellphoneFill, //name="ri-cellphone-fill"
+  MdEmailOutlined, //name="md-email-outlined"
+)
 
-// <font-awesome-icon icon="bars" size="2x" />whatsapp
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBars, faUser } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add([faBars, faUser])
-
-export default FontAwesomeIcon
+export default OhVueIcon

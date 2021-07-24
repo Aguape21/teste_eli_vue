@@ -72,3 +72,6 @@ Modelo de componente
 ´´´
 <template> <componente /> </template> <script> import componente from 'componente.vue'; export default { components: { componente: componente }, props: [], data: function () { return { teste: true } }, created: function () { this.mudarTeste() }, methods: { mudarTeste() { this.teste = false }, }, } </script> <style></style> 
 ´´´
+
+
+Abrir filerof leve firefox -safe-mode

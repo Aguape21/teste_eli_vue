@@ -12,11 +12,6 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-regular-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/vue-fontawesome": "^2.0.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
@@ -25,6 +20,7 @@
     "jwt-decode": "^3.1.2",
     "mime-types": "^2.1.31",
     "moment": "^2.29.1",
+    "oh-vue-icons": "^0.4.5",
     "pretty-file-icons": "^2.2.1",
     "typeface-roboto": "^1.1.13",
     "url-join": "^4.0.1",
