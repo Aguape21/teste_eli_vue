@@ -7,6 +7,7 @@ import autenticacao from '../plugins/autenticacao'
 import eli_login from '../paginas/eli-login.vue'
 import eli_publicoRelatorio from '../paginas/eli-publicoRelatorio.vue'
 import eli_passagem from '../paginas/eli-passagem.vue'
+import eli_usuarios from '../paginas/eli-usuarios.vue'
 
 Vue.use(VueRouter)
 
@@ -69,6 +70,16 @@ const routes = [
     component: eli_passagem,
     beforeEnter: autenticar.privado,
   },
+
+
+    //página de cadastro de usuários
+    {
+      path: '/usuarios',
+      name: 'usuarios',
+      component: eli_usuarios,
+      beforeEnter: autenticar.privado,
+    },
+
 ]
 
 const router = new VueRouter({

@@ -9,10 +9,12 @@
         </v-container>
       </v-main>
     </v-app>
+    <eli-rodape></eli-rodape>
   </v-app>
 </template>
 
 <script>
+
 export default {
   data: () => ({}),
 }

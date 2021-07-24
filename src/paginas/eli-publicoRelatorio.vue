@@ -6,12 +6,7 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
     <div>
       <div id="quadro-logo" style="">
         <router-link :to="{ name: 'login' }">
-          <img
-            style="width: 220px;"
-            id="logo"
-            src="~@/assets/imagens/logonome.png"
-            alt=""
-          />
+          <eli-logo width="220px"></eli-logo>
         </router-link>
       </div>
 
@@ -102,12 +97,15 @@ import ListaRelatorios from '../modelos/lista_relatorios'
 import { abrirVariosPorCodigo } from '../modelos/lista_relatorios_anexos'
 //botao de ajuda
 import botaoAjuda from '../componentes/ferramenta/eli-botaoAjuda.vue'
+//importar logo
+import eli_logo from '../componentes/ferramenta/eli-logo.vue'
 
 export default {
   components: {
     'eli-centro': eli_centro,
     'eli-ListaRelatoriosAnexos': eli_ListaRelatoriosAnexos,
     'eli-botaoAjuda': botaoAjuda,
+    'eli-logo': eli_logo,
   },
   data: function () {
     return {
@@ -185,9 +183,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-#logo {
-  width: 70%;
 }
 
 #painel {

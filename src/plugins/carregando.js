@@ -15,13 +15,13 @@ const configuracaoCarregando = {
   //classes: ['myclass'] // array, object or string
 }
 
-import Carregando from '../componentes/ferramenta/Carregando.vue'
+import eli_carregando from '../componentes/ferramenta/eli-carregando.vue'
 
 let vm = {}
 
 const InstalarCarregando = {
   install(Vue) { 
-    const loadingPlugin = Vue.extend(Carregando)
+    const loadingPlugin = Vue.extend(eli_carregando)
     vm = new loadingPlugin({
       data: configuracaoCarregando,
     }).$mount()
