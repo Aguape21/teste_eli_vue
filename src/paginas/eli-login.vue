@@ -42,7 +42,7 @@
 
 <script>
 import eli_centro from '../componentes/retratos/eli-centro.vue'
-import eli_logo from '../componentes/ferramenta/eli-logo.vue'
+import eli_logo from '../componentes/ferramentas/eli-logo.vue'
 import Usuarios from '../modelos/usuarios'
 
 export default {

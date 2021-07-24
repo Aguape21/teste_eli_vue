@@ -1,29 +1,8 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-app id="inspire">
-        <v-navigation-drawer v-model="drawer" app>
-          <v-list dense>
-            <v-list-item link>
-              <v-list-item-action>
-                <oh-icon name="fa-users" />
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Home</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item link>
-              <v-list-item-action>
-                <v-icon>mdi-email</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Contact</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-navigation-drawer>
-
-        <v-app-bar app color="primary" dark>
+      <v-app id="keep">
+        <v-app-bar app clipped-left color="primary" dark>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer">
             <oh-icon name="fa-bars" />
           </v-app-bar-nav-icon>
@@ -51,11 +30,24 @@
           </v-menu>
         </v-app-bar>
 
+        <v-navigation-drawer
+          v-model="drawer"
+          app
+          clipped
+          color="grey lighten-4"
+        >
+          <eli-menu></eli-menu>
+        </v-navigation-drawer>
+
         <v-main>
-          <v-container class="fill-height" fluid>
-            <v-row align="center" justify="center">
-              <v-col style="min-height: 500px;" class="text-center">
-                <v-tooltip left>
+          <v-container
+            style="min-height: 500px;"
+            fluid
+            class="grey lighten-4 fill-height"
+          >
+            <v-row justify="center" align="center">
+              <v-col class="shrink">
+                <v-tooltip right>
                   <template v-slot:activator="{ on }">
                     <v-btn :href="source" icon large target="_blank" v-on="on">
                       <v-icon large>mdi-code-tags</v-icon>
@@ -74,8 +66,10 @@
 </template>
 
 <script>
-import eli_logo from '../ferramenta/eli-logo.vue'
-import eli_rodape from '../ferramenta/eli-rodape.vue'
+/* eslint-disable vue/no-unused-components */
+import eli_logo from '../ferramentas/eli-logo.vue'
+import eli_rodape from '../ferramentas/eli-rodape.vue'
+import eli_menu from '../ferramentas/eli-menu'
 
 export default {
   created() {},
@@ -83,21 +77,20 @@ export default {
   components: {
     'eli-logo': eli_logo,
     'eli-rodape': eli_rodape,
+    'eli-menu': eli_menu,
   },
+
   props: {
     source: String,
   },
   data: () => ({
-    drawer: false,
-    group: null,
+    drawer: null,
   }),
-
-  watch: {
-    group() {
-      this.drawer = false
-    },
-  },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+#keep .v-navigation-drawer__border {
+  display: none;
+}
+</style>

@@ -16,7 +16,7 @@
 
 <script>
 
-import eli_rodape from '../ferramenta/eli-rodape.vue'
+import eli_rodape from '../ferramentas/eli-rodape.vue'
 
 export default {
   components:{'eli-rodape':eli_rodape},

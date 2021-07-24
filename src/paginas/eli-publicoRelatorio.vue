@@ -96,9 +96,9 @@ import ListaRelatorios from '../modelos/lista_relatorios'
 //modelo anexos
 import { abrirVariosPorCodigo } from '../modelos/lista_relatorios_anexos'
 //botao de ajuda
-import botaoAjuda from '../componentes/ferramenta/eli-botaoAjuda.vue'
+import botaoAjuda from '../componentes/ferramentas/eli-botaoAjuda.vue'
 //importar logo
-import eli_logo from '../componentes/ferramenta/eli-logo.vue'
+import eli_logo from '../componentes/ferramentas/eli-logo.vue'
 
 export default {
   components: {
