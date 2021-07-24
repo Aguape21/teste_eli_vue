@@ -1,30 +1,20 @@
 <template>
-
-
-          <v-list dense>
-            <v-list-item link>
-              <v-list-item-action>
-                <oh-icon name="fa-users" />
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Home</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item link>
-              <v-list-item-action>
-                <v-icon>mdi-email</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Contact</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-
+<div>
+  <b-link v-b-toggle.collapse-1 variant="primary">Toggle Collapse</b-link>
+  <b-collapse id="collapse-1" class="mt-2">
+    <b-card>
+      <p class="card-text">Collapse contents Here</p>
+      <b-button v-b-toggle.collapse-1-inner size="sm">Toggle Inner Collapse</b-button>
+      <b-collapse id="collapse-1-inner" class="mt-2">
+        <b-card>Hello!</b-card>
+      </b-collapse>
+    </b-card>
+  </b-collapse>
+</div>
 </template>
 <script>
-
 export default {
-  components: {  },
+  components: {},
   props: [],
   data: function () {
     return { teste: true }

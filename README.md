@@ -75,3 +75,7 @@ Modelo de componente
 
 
 Abrir filerof leve firefox -safe-mode
+
+
+componente para ver texto grande 
+https://bootstrap-vue.org/docs/components/dropdown#dropdown-form__BV_toggle_
