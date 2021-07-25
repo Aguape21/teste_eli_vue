@@ -7,7 +7,7 @@ dotenv.config()
 
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-import router from './rotas/rotas'
+import {router} from './rotas/rotas'
 
 import InstalarCarregando from './plugins/carregando'
 Vue.use(InstalarCarregando)

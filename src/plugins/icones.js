@@ -15,14 +15,18 @@ import {
   FaUserEdit,
   RiCellphoneFill,
   MdEmailOutlined,
+  FaFolderOpen,
+  OiDot,
 } from 'oh-vue-icons/icons'
 OhVueIcon.add(
-  BiWhatsapp, //name="bi-whatsapp"
-  FaUsers, //name="fa-users"
-  FaBars, //name="fa-bars"
-  FaUserEdit, //name="fa-user-edit"
-  RiCellphoneFill, //name="ri-cellphone-fill"
-  MdEmailOutlined, //name="md-email-outlined"
+  BiWhatsapp, //  <oh-icon name="bi-whatsapp" />
+  FaUsers, //  <oh-icon name="fa-users" />
+  FaBars, //   <oh-icon name="fa-bars" />
+  FaUserEdit, //  <oh-icon name="fa-user-edit" />
+  RiCellphoneFill, //  <oh-icon name="ri-cellphone-fill" />
+  MdEmailOutlined, //  <oh-icon name="md-email-outlined" />
+  FaFolderOpen, //  <oh-icon name="fa-folder-open" />
+  OiDot, //  <oh-icon name="oi-dot" />
 )
 
 export default OhVueIcon

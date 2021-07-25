@@ -24,6 +24,7 @@
     "pretty-file-icons": "^2.2.1",
     "typeface-roboto": "^1.1.13",
     "url-join": "^4.0.1",
+    "uuid": "^8.3.2",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.4",
     "vue-gtag": "^1.16.1",
