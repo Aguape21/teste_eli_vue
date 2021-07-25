@@ -1,16 +1,69 @@
 <template>
-<div>
-  <b-link v-b-toggle.collapse-1 variant="primary">Toggle Collapse</b-link>
-  <b-collapse id="collapse-1" class="mt-2">
-    <b-card>
-      <p class="card-text">Collapse contents Here</p>
-      <b-button v-b-toggle.collapse-1-inner size="sm">Toggle Inner Collapse</b-button>
-      <b-collapse id="collapse-1-inner" class="mt-2">
-        <b-card>Hello!</b-card>
-      </b-collapse>
-    </b-card>
-  </b-collapse>
-</div>
+  <div>
+    <ul id="ul" class="list-unstyled components">
+      <li>
+        <b-link
+          v-b-toggle.my-collapse
+          data-toggle="collapse"
+          aria-expanded="false"
+          class="dropdown-toggle"
+        >
+          <oh-icon name="fa-bars" animation="pulse" hover/>
+          Pages
+        </b-link>
+
+        <b-collapse id="my-collapse">
+          <ul class="list-unstyled" id="pageSubmenu">
+            <li>
+              <b-link href="#">
+                <oh-icon name="fa-bars" />
+
+                Page 1
+              </b-link>
+            </li>
+            <li>
+              <b-link href="#">Page 2</b-link>
+            </li>
+            <li>
+              <b-link href="#">Page 3</b-link>
+            </li>
+          </ul>
+        </b-collapse>
+      </li>
+    </ul>
+
+    <ul class="list-unstyled components">
+      <li>
+        <b-link
+          v-b-toggle.my-collapse
+          data-toggle="collapse"
+          aria-expanded="false"
+          class="dropdown-toggle"
+        >
+          <oh-icon name="fa-bars" />
+          Pages
+        </b-link>
+
+        <b-collapse id="my-collapse">
+          <ul class="list-unstyled" id="pageSubmenu">
+            <li>
+              <b-link href="#">
+                <oh-icon name="fa-bars" />
+
+                Page 1
+              </b-link>
+            </li>
+            <li>
+              <b-link href="#">Page 2</b-link>
+            </li>
+            <li>
+              <b-link href="#">Page 3</b-link>
+            </li>
+          </ul>
+        </b-collapse>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
@@ -29,4 +82,84 @@ export default {
   },
 }
 </script>
-<style></style>
+<style scoped>
+.active {
+  margin-left: -250px;
+}
+
+#ul {
+  padding-left: 0px !important;
+}
+
+#pageSubmenu {
+  padding-left: 5px !important;
+}
+
+#ul-li {
+  padding-left: 20px;
+}
+
+ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+ul li a:hover {
+  background: #fff;
+}
+
+ul li.active > a,
+a[aria-expanded='true'] {
+  color: #000000;
+}
+
+a[data-toggle='collapse'] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+}
+
+ul.CTAs {
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.download {
+  background: #fff;
+  color: #000000;
+}
+
+a.article,
+a.article:hover {
+  color: #000000 !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+</style>

@@ -8,8 +8,6 @@ const vuetify = new Vuetify({
     themes: {
       light: {
         primary: '#688c00',
-        secondary: '#b0bec5',
-        anchor: '#8c9eff',
       },
     },
   },
