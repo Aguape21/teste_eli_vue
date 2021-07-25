@@ -40,23 +40,44 @@
         </v-navigation-drawer>
 
         <v-main>
-          <v-container
-            style="min-height: 500px;"
-            fluid
-            class="grey lighten-4 fill-height"
-          >
-            <v-row justify="center" align="center">
-              <v-col class="shrink">
-                <v-tooltip right>
-                  <template v-slot:activator="{ on }">
-                    <v-btn :href="source" icon large target="_blank" v-on="on">
-                      <v-icon large>mdi-code-tags</v-icon>
-                    </v-btn>
-                  </template>
-                  <span>Source</span>
-                </v-tooltip>
-              </v-col>
-            </v-row>
+          <v-container style="min-height: 500px;" fluid class="grey lighten-4">
+            <b-row>
+              <b-col cols="12">
+                <b-breadcrumb>
+                  <b-breadcrumb-item
+                    v-for="(item, idz) of menus"
+                    :href="item.href"
+                    :to="item.to"
+                    :key="idz + 'breadcrumb'"
+                  >
+                    {{ item.text }}
+                  </b-breadcrumb-item>
+                </b-breadcrumb>
+              </b-col>
+            </b-row>
+
+            <div class="p-2">
+              <b-row
+                v-for="a in [1, 2, 3, 4]"
+                :key="a"
+                :style="{ 'background-color': a % 2 ? '#E9FFF4' : '#ffffff' }"
+              >
+                <b-col cols="2">
+                  <legend style="font-size: 12px;">Empreendedor</legend>
+                  Terra Cota
+                </b-col>
+
+                <b-col cols="4">
+                  <legend style="font-size: 12px;">CNPK</legend>
+                  000.000.000.000
+                </b-col>
+
+                <b-col cols="4">
+                  <legend style="font-size: 12px;">Cidade</legend>
+                  Terra Cota
+                </b-col>
+              </b-row>
+            </div>
           </v-container>
         </v-main>
         <eli-rodape></eli-rodape>
@@ -85,6 +106,10 @@ export default {
   },
   data: () => ({
     drawer: null,
+    menus:[{
+      text:'Painel',
+      to:'painel'
+    }]
   }),
 }
 </script>
@@ -92,5 +117,25 @@ export default {
 <style scoped>
 #keep .v-navigation-drawer__border {
   display: none;
+}
+
+.text-on-pannel {
+  background: #fff none repeat scroll 0 0;
+  height: auto;
+  margin-left: 20px;
+  padding: 3px 5px;
+  position: absolute;
+  margin-top: -47px;
+  border: 1px solid #337ab7;
+  border-radius: 8px;
+}
+
+.panel {
+  /* for text on pannel */
+  margin-top: 27px !important;
+}
+
+.panel-body {
+  padding-top: 30px !important;
 }
 </style>

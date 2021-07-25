@@ -1,5 +1,7 @@
 <template>
-  <eli-baseMenuPainel></eli-baseMenuPainel>
+  <eli-baseMenuPainel>
+    
+  </eli-baseMenuPainel>
 </template>
 
 <script>

@@ -57,7 +57,7 @@ export const gruposMenu = [
     rotas: [
       //página de cadastro de usuários
       {
-        path: '/usuarios',
+        path: '/usuarios/:filtrosUsuarios?',
         name: 'usuarios',
         component: eli_usuarios,
         meta: { nome: 'Usuarios', icone: 'fa-users' },
@@ -258,6 +258,13 @@ const fotasFora = [
     path: '/passagem',
     name: 'passagem',
     component: eli_passagem,
+    beforeEnter: autenticar.privado,
+  },
+
+  {
+    path: '/#!/painel',
+    name: 'painel',
+    meta: { nome: 'Painel', icone: '' },
     beforeEnter: autenticar.privado,
   },
 ]
