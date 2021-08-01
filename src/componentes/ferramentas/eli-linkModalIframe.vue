@@ -17,18 +17,15 @@
   </a>
 </template>
 <script lang="ts">
-  import Vue from 'vue';
-  export default Vue.extend({components: {},
+import Vue from 'vue'
+export default Vue.extend({
+  components: {},
   props: ['texto', 'link'],
   data: function () {
     return { modalShow: false }
   },
-  created: function () {
-
-  },
-  methods: {
-
-  },
-}
+  created: function () {},
+  methods: {},
+})
 </script>
 <style></style>
