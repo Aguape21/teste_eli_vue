@@ -133,7 +133,7 @@ export default {
   },
   data: () => ({
     drawer: null,
-    pagina: 1,
+    pagina: 99,
   }),
 }
 </script>

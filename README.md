@@ -75,7 +75,7 @@ Modelo de componente
 ´´´
 
 
-Abrir filerof leve firefox -safe-mode
+Abrir firefox leve firefox -safe-mode
 
 
 componente para ver texto grande 

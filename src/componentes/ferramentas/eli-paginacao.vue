@@ -92,6 +92,7 @@ export default Vue.extend({
     }
   },
   created: function () {
+    debugger
     //calcular a quantidade de páginas caso não tenha
     this.quantidadePaginas_ = this.quantidadePaginas
       ? this.quantidadePaginas
@@ -114,8 +115,16 @@ export default Vue.extend({
       let paginas_anterior = this.paginaAtual_ <= 3 ? this.paginaAtual_ : 3
       let paginas_posterior =
         this.quantidadePaginas_ - this.paginaAtual_ - 1 <= 3
-          ? this.quantidadePaginas - this.paginaAtual_ - 1
+          ? this.quantidadePaginas_ - this.paginaAtual_ - 1
           : 3
+
+      if (paginas_posterior < 3) {
+        paginas_anterior += 3 - paginas_posterior
+      }
+
+      if (paginas_anterior < 3) {
+        paginas_posterior += 3 - paginas_anterior
+      }
 
       this.listaPaginas = [
         ...Array.from(Array(paginas_anterior).keys())
