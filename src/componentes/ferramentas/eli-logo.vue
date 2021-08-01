@@ -9,12 +9,12 @@ export default Vue.extend({
   props: { height: Number, width: Number, tipo: String },
   data: function () {
     return {
-      estilo: {},
+      estilo: {} as { [key: string]: any },
       tipos: {
         normal: require('@/assets/imagens/logos/escala-branco.png'),
         verde: require('@/assets/imagens/logos/verde-verde.png'),
         branco: require('@/assets/imagens/logos/branco-branco.png'),
-      },
+      } as { [key: string]: any },
       endereco: '',
     }
   },

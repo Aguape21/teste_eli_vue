@@ -20,7 +20,7 @@ export default class Usuarios extends Modelo {
               cadastros_base
 `
 
-  constructor(objeto: objetoRecurso) {
+  constructor(objeto?: objetoRecurso) {
     super(objeto)
   }
 

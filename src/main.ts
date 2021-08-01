@@ -9,7 +9,7 @@ import InstalarCarregando from './plugins/carregando'
 Vue.use(InstalarCarregando)
 declare module 'vue/types/vue' {
   interface Vue {
-   carregando: (a: boolean|Promise<any>) => boolean|Promise<boolean>
+   carregando: (a: Promise<any>) => Promise<boolean>
   } 
 }
 

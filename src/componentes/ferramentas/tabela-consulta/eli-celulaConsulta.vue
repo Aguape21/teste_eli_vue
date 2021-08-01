@@ -23,14 +23,8 @@ export default Vue.extend({
   data: function () {
     return { teste: true }
   },
-  created: function () {
-    this.mudarTeste()
-  },
-  methods: {
-    mudarTeste() {
-      this.teste = false
-    },
-  },
+  created: function () {},
+  methods: {},
 })
 </script>
 <style></style>

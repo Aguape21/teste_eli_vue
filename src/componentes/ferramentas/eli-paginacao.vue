@@ -65,50 +65,56 @@ export default Vue.extend({
     },
     funcao: {
       type: Function,
-      default: (a) => console.log(a),
+      default: (a: string) => console.log(a),
     },
   },
   data: function () {
-    return { listaPaginas: [0, 1, 2, 3, 4, 5, 6] }
+    return {
+      listaPaginas: [0, 1, 2, 3, 4, 5, 6],
+      paginaAtual_: 0 as number,
+      quantidadePaginas_: 0 as number,
+    }
   },
   created: function () {
     //calcular a quantidade de páginas caso não tenha
     if (!this.quantidadePaginas) {
-      this.quantidadePaginas =
+      this.quantidadePaginas_ =
         ((this.quantidadeRegistros / this.registrosPorPagina) | 0) +
         (this.quantidadeRegistros % this.registrosPorPagina ? 1 : 0)
     }
 
     //pegar valor da página atual
-    this.paginaAtual =
+    this.paginaAtual_ =
       this.value < 0
         ? 0
-        : this.value < this.quantidadePaginas
+        : this.value < this.quantidadePaginas_
         ? this.value
-        : this.quantidadePaginas - 1
+        : this.quantidadePaginas_ - 1
 
     //montar array
 
     /*
-    const paginas_anterior = this.paginaAtual <= 3 ? this.paginaAtual : 3
+    const paginas_anterior = this.paginaAtual_ <= 3 ? this.paginaAtual_ : 3
     const paginas_posterior =
-      this.quantidadePaginas - this.paginaAtual - 1 <= 3
-        ? this.quantidadePaginas - this.paginaAtual - 1
+      this.quantidadePaginas - this.paginaAtual_ - 1 <= 3
+        ? this.quantidadePaginas - this.paginaAtual_ - 1
         : 3
 */
-    if (this.quantidadePaginas <= 11) {
-      this.listaPaginas = Array.from(Array(this.quantidadePaginas).keys())
+    if (this.quantidadePaginas_ <= 11) {
+      this.listaPaginas = Array.from(Array(this.quantidadePaginas_).keys())
     } else {
-      this.listaPaginas = [].concat(
-        Array.from(Array(this.quantidadePaginas).keys())
+      this.listaPaginas = [
+        ...Array.from(Array(this.quantidadePaginas_).keys())
           .reverse()
-          .map((a) => this.paginaAtual - a),
-      )
+          .map((a) => this.paginaAtual_ - a),
+      ]
     }
   },
   methods: {
-    irPara(pg) {
-      this.funcao(pg)
+    irPara(pg: number) {
+      if (this.funcao) {
+        this.funcao(pg)
+      }
       this.$emit('input', pg)
     },
   },

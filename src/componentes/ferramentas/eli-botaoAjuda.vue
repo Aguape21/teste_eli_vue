@@ -19,10 +19,12 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+import { PropType } from 'vue'
+export default Vue.extend({
   methods: {
-    trataTutorial() {
-      return this.tutorial.map((a) => {
+    trataTutorial():{ [key: string]: any }[] {
+      return this.tutorial.map((a:{ [key: string]: any }) => {
         a.params = {
           placement: 'top',
         }
@@ -44,7 +46,7 @@ export default {
   }),
   props: {
     componente: String,
-    tutorial: Array,
+    tutorial: Array as PropType<{ [key: string]: any }[]>,
   },
-}
+})
 </script>

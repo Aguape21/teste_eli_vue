@@ -94,7 +94,9 @@ import eli_ListaRelatoriosAnexos from '../componentes/recursos/eli-ListaRelatori
 //modelo de objeto
 import ListaRelatorios from '../modelos/lista_relatorios'
 //modelo anexos
-import { abrirVariosPorCodigo } from '../modelos/lista_relatorios_anexos'
+import ListaRelatoriosAnexos, {
+  abrirVariosPorCodigo,
+} from '../modelos/lista_relatorios_anexos'
 //botao de ajuda
 import botaoAjuda from '../componentes/ferramentas/eli-botaoAjuda.vue'
 //importar logo
@@ -112,7 +114,7 @@ export default Vue.extend({
     return {
       codigoRelatorio: '',
       listaRelatorios: null as null | ListaRelatorios,
-      anexos: null,
+      anexos: null as null | ListaRelatoriosAnexos[],
       erro: null,
       tutorial: [
         {
@@ -166,11 +168,14 @@ export default Vue.extend({
       )
 
       if (
-        this.listaRelatorios.codigos_relatorios_anexos &&
-        this.listaRelatorios.codigos_relatorios_anexos.length > 0
+        this.listaRelatorios.objeto.codigos_relatorios_anexos &&
+        Array.isArray(this.listaRelatorios.objeto.codigos_relatorios_anexos) &&
+        this.listaRelatorios.objeto.codigos_relatorios_anexos.length > 0
       ) {
         this.anexos = await abrirVariosPorCodigo(
-          this.listaRelatorios.codigos_relatorios_anexos,
+          this.listaRelatorios.objeto.codigos_relatorios_anexos
+            ?.toString()
+            .split(',') || [],
         )
       }
     },

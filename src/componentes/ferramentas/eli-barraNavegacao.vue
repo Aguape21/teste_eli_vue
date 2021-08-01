@@ -50,12 +50,11 @@ export default Vue.extend({
     return { teste: true }
   },
   created: function () {
-    this.mudarTeste()
+
   },
   methods: {
-    mudarTeste() {
-      this.teste = false
-    },
+
+
   },
 })
 </script>

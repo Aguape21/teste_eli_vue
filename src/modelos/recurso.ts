@@ -3,10 +3,10 @@
 import api from '../plugins/api'
 
 interface objetoRecurso {
-   [key: string]: string | number | null | undefined;
+  [key: string]: string | number | null | undefined | string[]
 }
 
-export {objetoRecurso}
+export { objetoRecurso }
 
 export default class Modelo {
   //indica o recurso da classe

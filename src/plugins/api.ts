@@ -1,7 +1,7 @@
 //Biblioteca de conexão com API
 
-import { post, get } from './http.js'
-import autenticacao from './autenticacao.js'
+import { post, get } from './http'
+import autenticacao from './autenticacao'
 const urljoin = require('url-join')
 
 class API {

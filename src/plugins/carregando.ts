@@ -30,15 +30,7 @@ const InstalarCarregando = {
 
     document.body.appendChild(vm.$el)
     vm.loading = false
-    Vue.prototype.carregando = (fn: boolean | Promise<any>): boolean | Promise<boolean> => {
-      if (fn == true) {
-        vm.loading = true
-        return true
-      }
-      if (fn == false) {
-        vm.loading = false
-        return false
-      }
+    Vue.prototype.carregando = (fn: Promise<any>):  Promise<boolean> => {
 
       return new Promise((resolve, reject) => {
         vm.loading = true

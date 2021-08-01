@@ -1,16 +1,15 @@
 <template>
- <!-- -bind:class="classes" -->
+  <!-- -bind:class="classes" -->
   <div
     class="loading-screen"
     v-show="loading"
-   
     v
-    v-bind:style="{ backgroundColor: bc }"
+    v-bind:style="{ backgroundColor: background }"
   >
     <component v-if="customLoader" v-bind:is="customLoader"></component>
     <div v-else>
       <div>
-        <img id="gif" src="~@/assets/imagens/quero-quero.gif" alt="">
+        <img id="gif" src="~@/assets/imagens/quero-quero.gif" alt="" />
       </div>
       <p class="loading-text">{{ text }}</p>
     </div>
@@ -21,30 +20,23 @@ export default {
   data() {
     return {
       text: 'Loading',
-      dark: false,
       classes: null,
       loading: false,
-      background: null,
+      background: 'rgba(255,255,255,0.5)' as string,
       customLoader: null,
     }
   },
   computed: {
-    bc() {
-      return (
-        this.background ||
-        (this.dark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)')
-      )
-    },
+
   },
 }
 </script>
 <style scoped>
-
-  #gif{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-  }
+#gif {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
 
 .loading-screen {
   display: flex;
@@ -73,7 +65,6 @@ export default {
   font-size: 14px;
   text-align: center;
   font-weight: bold;
-
 }
 @keyframes circleanimation {
   from {

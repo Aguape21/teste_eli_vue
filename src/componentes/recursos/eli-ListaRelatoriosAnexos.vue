@@ -45,7 +45,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   data: () => ({
-    anexo: null,
+    anexo: null as null | ListaRelatoriosAnexos,
   }),
 
   created: function () {
@@ -60,14 +60,14 @@ export default Vue.extend({
         this.anexo = new ListaRelatoriosAnexos()
       }
 
-      if (this.codigo) {
+      if (this.codigo && this.anexo) {
         this.anexo.abrir(this.codigo, true)
       }
     },
 
     icone() {
       return require('pretty-file-icons/svg/' +
-        prettyFileIcons.getIcon(this.anexo.nome_arquivo, 'svg'))
+        prettyFileIcons.getIcon(this.anexo?.objeto.nome_arquivo, 'svg'))
     },
   },
 

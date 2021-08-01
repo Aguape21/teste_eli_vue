@@ -48,14 +48,14 @@ import Usuarios from '../modelos/usuarios'
   import Vue from 'vue';
   export default Vue.extend({components: {
     'eli-centro': eli_centro,
-  },  'eli-logo': eli_logo,
+  'eli-logo': eli_logo,},
 
   data: () => ({
     email: process.env.VUE_APP_TESTE_EMAIL || '',
     senha: process.env.VUE_APP_TESTE_SENHA || '',
     variants: { danger: 'danger', success: 'success' },
     variantAlerta: '',
-    mensagemAlerta: null,
+    mensagemAlerta: null as null|string,
   }),
 
   methods: {
@@ -64,7 +64,7 @@ import Usuarios from '../modelos/usuarios'
       try {
         const usuario = await new Usuarios().login(this.email, this.senha)
         this.variantAlerta = this.variants.success
-        this.mensagemAlerta = `Bem vindo(a) ${usuario.nome}.`
+        this.mensagemAlerta = `Bem vindo(a) ${usuario.objeto.nome}.`
         this.$router.push('passagem');
       } catch (error) {
         this.variantAlerta = this.variants.danger
@@ -72,7 +72,7 @@ import Usuarios from '../modelos/usuarios'
       }
     },
   },
-}
+})
 </script>
 
 <style>

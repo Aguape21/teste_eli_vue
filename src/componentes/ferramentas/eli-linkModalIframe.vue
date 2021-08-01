@@ -24,12 +24,10 @@
     return { modalShow: false }
   },
   created: function () {
-    this.mudarTeste()
+
   },
   methods: {
-    mudarTeste() {
-      this.teste = false
-    },
+
   },
 }
 </script>
