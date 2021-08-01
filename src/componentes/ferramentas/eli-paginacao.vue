@@ -9,12 +9,20 @@ funcao = (novaPagina)=>VaiPara()
 -->
 
 <template>
-  <div align="center" class="overflow-auto">
+  <div v-if="listaPaginas.length > 1" align="center" class="overflow-auto">
     <b-button-group>
-      <b-button variant="outline-primary">
+      <b-button
+        v-if="listaPaginas[0] > 0"
+        @click="irPara(0)"
+        variant="outline-primary"
+      >
         <oh-icon name="fa-angle-double-left" />
       </b-button>
-      <b-button variant="outline-primary">
+      <b-button
+        v-if="listaPaginas[0] > 0"
+        @click="irPara(paginaAtual_ - 1)"
+        variant="outline-primary"
+      >
         <oh-icon name="fa-angle-left" />
       </b-button>
 
@@ -27,10 +35,18 @@ funcao = (novaPagina)=>VaiPara()
         {{ pagina + 1 }}
       </b-button>
 
-      <b-button variant="outline-primary">
+      <b-button
+        v-if="listaPaginas[listaPaginas.length - 1] < quantidadePaginas_ - 1"
+        @click="irPara(paginaAtual_ + 1)"
+        variant="outline-primary"
+      >
         <oh-icon name="fa-angle-right" />
       </b-button>
-      <b-button variant="outline-primary">
+      <b-button
+        v-if="listaPaginas[listaPaginas.length - 1] < quantidadePaginas_ - 1"
+        @click="irPara(quantidadePaginas_ - 1)"
+        variant="outline-primary"
+      >
         <oh-icon name="fa-angle-double-right" />
       </b-button>
     </b-button-group>
@@ -70,18 +86,17 @@ export default Vue.extend({
   },
   data: function () {
     return {
-      listaPaginas: [0, 1, 2, 3, 4, 5, 6],
+      listaPaginas: [0, 1, 2, 3, 4, 5, 6] as number[],
       paginaAtual_: 0 as number,
       quantidadePaginas_: 0 as number,
     }
   },
   created: function () {
     //calcular a quantidade de páginas caso não tenha
-    if (!this.quantidadePaginas) {
-      this.quantidadePaginas_ =
-        ((this.quantidadeRegistros / this.registrosPorPagina) | 0) +
+    this.quantidadePaginas_ = this.quantidadePaginas
+      ? this.quantidadePaginas
+      : ((this.quantidadeRegistros / this.registrosPorPagina) | 0) +
         (this.quantidadeRegistros % this.registrosPorPagina ? 1 : 0)
-    }
 
     //pegar valor da página atual
     this.paginaAtual_ =
@@ -91,22 +106,25 @@ export default Vue.extend({
         ? this.value
         : this.quantidadePaginas_ - 1
 
-    //montar array
-
-    /*
-    const paginas_anterior = this.paginaAtual_ <= 3 ? this.paginaAtual_ : 3
-    const paginas_posterior =
-      this.quantidadePaginas - this.paginaAtual_ - 1 <= 3
-        ? this.quantidadePaginas - this.paginaAtual_ - 1
-        : 3
-*/
     if (this.quantidadePaginas_ <= 11) {
       this.listaPaginas = Array.from(Array(this.quantidadePaginas_).keys())
     } else {
+      //montar array
+
+      let paginas_anterior = this.paginaAtual_ <= 3 ? this.paginaAtual_ : 3
+      let paginas_posterior =
+        this.quantidadePaginas_ - this.paginaAtual_ - 1 <= 3
+          ? this.quantidadePaginas - this.paginaAtual_ - 1
+          : 3
+
       this.listaPaginas = [
-        ...Array.from(Array(this.quantidadePaginas_).keys())
+        ...Array.from(Array(paginas_anterior).keys())
           .reverse()
-          .map((a) => this.paginaAtual_ - a),
+          .map((a) => this.paginaAtual_ - a - 1),
+        this.paginaAtual_,
+        ...Array.from(Array(paginas_posterior).keys()).map(
+          (a) => this.paginaAtual_ + a + 1,
+        ),
       ]
     }
   },

@@ -6,7 +6,7 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'logoElicencie',
-  props: { height: Number, width: Number, tipo: String },
+  props: { height: [Number, String], width: [Number, String], tipo: String },
   data: function () {
     return {
       estilo: {} as { [key: string]: any },
