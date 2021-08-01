@@ -1,0 +1,1 @@
+Componentes que serão utlizados em páginas de consulta

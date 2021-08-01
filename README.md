@@ -68,7 +68,16 @@ try {
 }
 })
 ´´´
+Modelo de componente
+´´´
+<template><componente /></template> <script> import componente from 'componente.vue';   import Vue from 'vue';
+  export default Vue.extend({components: { componente: componente }, props: ['value'], data: function () { return { teste: true } }, created: function () { this.mudarTeste() }, methods: { atualizarVModel() { this.$emit('input', this.value) }, mudarTeste() { this.teste = false }, }, } </script> <style scoped> </style>
+´´´
 
-´´´
- <template> <div>{{teste}}</div> </template> <script> import componente from 'componente.vue' export default { components: { 'componente': componente, }, data: function () { return { teste: true, }; }, created: function () { this.mudarTeste(); }, methods: { mudarTeste() {this.teste = false}, }, } </script> <style> </style> 
-´´´
+
+Abrir filerof leve firefox -safe-mode
+
+
+componente para ver texto grande 
+https://bootstrap-vue.org/docs/components/dropdown#dropdown-form__BV_toggle_
+

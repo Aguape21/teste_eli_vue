@@ -6,12 +6,7 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
     <div>
       <div id="quadro-logo" style="">
         <router-link :to="{ name: 'login' }">
-          <img
-            style="width: 220px;"
-            id="logo"
-            src="~@/assets/imagens/logonome.png"
-            alt=""
-          />
+          <eli-logo width="220px"></eli-logo>
         </router-link>
       </div>
 
@@ -91,9 +86,9 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
   </eli-centro>
 </template>
 
-<script>
+<script lang="ts">
 //template de página
-import eli_centro from '../componentes/modelos/eli-centro.vue'
+import eli_centro from '../componentes/retratos/eli-centro.vue'
 //template de linha de anexo
 import eli_ListaRelatoriosAnexos from '../componentes/recursos/eli-ListaRelatoriosAnexos.vue'
 //modelo de objeto
@@ -101,18 +96,22 @@ import ListaRelatorios from '../modelos/lista_relatorios'
 //modelo anexos
 import { abrirVariosPorCodigo } from '../modelos/lista_relatorios_anexos'
 //botao de ajuda
-import botaoAjuda from '../componentes/ferramenta/eli-botaoAjuda.vue'
+import botaoAjuda from '../componentes/ferramentas/eli-botaoAjuda.vue'
+//importar logo
+import eli_logo from '../componentes/ferramentas/eli-logo.vue'
 
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   components: {
     'eli-centro': eli_centro,
     'eli-ListaRelatoriosAnexos': eli_ListaRelatoriosAnexos,
     'eli-botaoAjuda': botaoAjuda,
+    'eli-logo': eli_logo,
   },
   data: function () {
     return {
       codigoRelatorio: '',
-      listaRelatorios: null,
+      listaRelatorios: null as null | ListaRelatorios,
       anexos: null,
       erro: null,
       tutorial: [
@@ -176,7 +175,7 @@ export default {
       }
     },
   },
-}
+})
 </script>
 
 <style>
@@ -185,9 +184,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-#logo {
-  width: 70%;
 }
 
 #painel {

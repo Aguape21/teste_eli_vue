@@ -1,0 +1,49 @@
+//Conexão com o recurso de relatórios
+
+import Modelo from './recurso'
+import { objetoRecurso } from './recurso'
+import { baixar } from '../plugins/http'
+import api from '../plugins/api'
+
+export default class ListaRelatoriosAnexos extends Modelo {
+  recurso = 'lista_relatorios_anexos'
+  colunas =
+    'codigo titulo codigo_corporativo codigo_anexo nome_arquivo descricao observacao ordem'
+
+  constructor(objeto?: objetoRecurso) {
+    super(objeto)
+  }
+
+  baixar = (novaGuia?: boolean) => {
+    const url =
+      'https://azteca.s3.us-east-1.amazonaws.com/anexos/' +
+      this.objeto.codigo_corporativo +
+      '/' +
+      this.objeto.codigo_anexo
+    return baixar(url, this.objeto.nome_arquivo?.toString(), novaGuia)
+  }
+}
+
+const abrirVariosPorCodigo = async (codigos: string[]) => {
+  const query =
+    '{' +
+    codigos
+      .map(
+        (a, idz) =>
+          `_${idz}:lista_relatorios_anexos(codigo:"${a}"){ ${
+            new ListaRelatoriosAnexos().colunas
+          } }`,
+      )
+      .join('\n') +
+    '}'
+
+  const busca = await api.graphql(query, true)
+
+  if (busca) {
+    return Object.values(busca).map((a) => new ListaRelatoriosAnexos(a))
+  } else {
+    return []
+  }
+}
+
+export { abrirVariosPorCodigo }

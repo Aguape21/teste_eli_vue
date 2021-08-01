@@ -1,7 +1,7 @@
 <template>
   <eli-centro>
     <v-row>
-      <v-img id="logo" src="~@/assets/imagens/logonome.png" />
+      <eli-logo></eli-logo>
 
       <v-card class="elevation-12">
         <v-toolbar color="primary" dark flat>
@@ -40,14 +40,15 @@
   </eli-centro>
 </template>
 
-<script>
-import eli_centro from '../componentes/modelos/eli-centro.vue'
+<script lang="ts">
+import eli_centro from '../componentes/retratos/eli-centro.vue'
+import eli_logo from '../componentes/ferramentas/eli-logo.vue'
 import Usuarios from '../modelos/usuarios'
 
-export default {
-  components: {
+  import Vue from 'vue';
+  export default Vue.extend({components: {
     'eli-centro': eli_centro,
-  },
+  },  'eli-logo': eli_logo,
 
   data: () => ({
     email: process.env.VUE_APP_TESTE_EMAIL || '',

@@ -21,13 +21,24 @@
          Login
         </router-link>
       </li>
+
+      <li>
+        <router-link
+          :to="{
+            name: 'usuarios',
+          }"
+        >
+         Usuários
+        </router-link>
+      </li>
+
     </ul>
   </div>
 </template>
 
-<script>
-export default {
-  components: {},
+<script lang="ts">
+  import Vue from 'vue';
+  export default Vue.extend({components: {},
 
   data: () => ({}),
 
