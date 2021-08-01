@@ -18,7 +18,7 @@
             name: 'login',
           }"
         >
-         Login
+          Login
         </router-link>
       </li>
 
@@ -28,22 +28,22 @@
             name: 'usuarios',
           }"
         >
-         Usuários
+          Usuários
         </router-link>
       </li>
-
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  export default Vue.extend({components: {},
+import Vue from 'vue'
+export default Vue.extend({
+  components: {},
 
   data: () => ({}),
 
   methods: {},
-}
+})
 </script>
 
 <style></style>
