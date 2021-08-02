@@ -2,14 +2,18 @@
 
 import { post, get } from './http'
 import autenticacao from './autenticacao'
-const urljoin = require('url-join')
+import urljoin from 'url-join'
+import { objetoRecurso } from '@/modelos/recurso'
+interface objetoGrapql {
+  [key: string]: objetoRecurso
+}
 
 class API {
   //monta a url para consulta
   #montarUrl = (caminho: string): string =>
     urljoin(process.env.VUE_APP_API_BASE_URL, caminho)
 
-  #cabecalho = (): { [key: string]: any } => {
+  #cabecalho = (): { [key: string]: string } => {
     //essa parte para permitir a migração de versões
     //cabelhalho com cados de autenticação
 
@@ -25,8 +29,8 @@ class API {
 
   post = async (
     caminho: string,
-    valor: { [key: string]: any },
-  ): Promise<{ [key: string]: any }[]> =>
+    valor: { [key: string]: string | number | null },
+  ): Promise<{ [key: string]: string | number | null }[]> =>
     new Promise((resposta, erro) => {
       try {
         post(this.#montarUrl(caminho), valor, this.#cabecalho())
@@ -45,7 +49,9 @@ class API {
       }
     })
 
-  get = async (caminho: string): Promise<{ [key: string]: any }[]> =>
+  get = async (
+    caminho: string,
+  ): Promise<{ [key: string]: string | number | null }[]> =>
     new Promise((resposta, erro) => {
       try {
         get(this.#montarUrl(caminho), this.#cabecalho())
@@ -66,10 +72,7 @@ class API {
 
   //retorna um consulta de graphql
   //Entradas query de consulta e indicar se será feito sem senha
-  graphql = (
-    query: string,
-    publico?: boolean,
-  ): Promise<{ [key: string]: any } | null> =>
+  graphql = (query: string, publico?: boolean): Promise<objetoGrapql | null> =>
     new Promise((resposta, erro) => {
       try {
         //remover espaços
@@ -79,7 +82,7 @@ class API {
           ? '/consultas/graphql' //consulta graphql com login
           : '/consultas/publico/graphql' //consulta grapql pública
 
-        post(this.#montarUrl(caminho), { query }, this.#cabecalho)
+        post(this.#montarUrl(caminho), { query }, this.#cabecalho())
           .then(function (response) {
             resposta(response.data.data)
           })

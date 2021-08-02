@@ -11,7 +11,7 @@ export { objetoRecurso }
 export default class Modelo {
   //indica o recurso da classe
   // usada para fazer as conexões com a API
-  recurso: string = ''
+  recurso = ''
 
   colunas: string | Array<string> = ''
 
@@ -23,7 +23,7 @@ export default class Modelo {
   }
 
   //Baixa/abre um recuros pelo código
-  abrir = async (codigo: string, publico?: boolean) => {
+  abrir = async (codigo: string, publico?: boolean): Promise<void> => {
     const query = `{
       ${this.recurso}(codigo:"${codigo}"){
         ${(typeof this.colunas == 'string'
@@ -42,8 +42,8 @@ export default class Modelo {
       )
     }
 
-    this.objeto = busca[this.recurso]
-
-    return this
+    if (busca && busca[this.recurso]) {
+      this.objeto = busca[this.recurso]
+    }
   }
 }

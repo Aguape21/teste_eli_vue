@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from 'axios'
 
-const fileDownload = require('js-file-download')
-const mime = require('mime-types')
+import fileDownload from 'js-file-download'
+import mime from 'mime-types'
 
 //retorna uma consulta do tipo GET
 export const get = (
   url: string,
-  cabecalho: { [key: string]: any },
-): Promise<AxiosResponse<any>> =>
+  cabecalho: { [key: string]: string },
+): Promise<AxiosResponse> =>
   new Promise((resposta, erro) => {
     try {
       axios({
@@ -29,9 +29,9 @@ export const get = (
 //retorna uma consulta do tipo post
 export const post = (
   url: string,
-  objeto: { [key: string]: any },
-  cabecalho: { [key: string]: any },
-): Promise<AxiosResponse<any>> =>
+  objeto: { [key: string]: string|number|null },
+  cabecalho: { [key: string]: string },
+): Promise<AxiosResponse> =>
   new Promise((resposta, erro) => {
     try {
       axios({
@@ -61,7 +61,7 @@ export const baixar = (
     try {
       //caso não receba nome, extrai da URL
       if (!nome || nome == '') {
-        nome = url.split('/').pop()?.split('?')[0] || 'arquivo.bin'
+        nome = url.split('/').pop()?.split('?')[0] || ''
       }
 
       axios({
@@ -71,12 +71,12 @@ export const baixar = (
       }).then((response) => {
         if (abrirNovaGuia) {
           const file = new Blob([response.data], {
-            type: mime.contentType(nome) || 'application/octet-stream',
+            type: mime.contentType(nome||'') || 'application/octet-stream',
           })
           const fileURL = URL.createObjectURL(file)
           window.open(fileURL, '_blank')
         } else {
-          fileDownload(response.data, nome)
+          fileDownload(response.data, nome||'')
         }
 
         resposta(true)

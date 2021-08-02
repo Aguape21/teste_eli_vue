@@ -9,10 +9,12 @@ Componente para exibição de anexo em linha de tabela
   <div>
     <b-row>
       <b-col cols="2">
-        <img :src="icone()" alt="" />
+        <h5>
+          <b-badge>{{ anexo.extensao() }}</b-badge>
+        </h5>
       </b-col>
       <b-col cols="6">
-        {{ anexo.titulo }}
+        {{ anexo.objeto.titulo }}
       </b-col>
       <b-col cols="4">
         <b-button-toolbar>
@@ -40,12 +42,12 @@ Componente para exibição de anexo em linha de tabela
 </template>
 <script lang="ts">
 import ListaRelatoriosAnexos from '../../modelos/lista_relatorios_anexos'
-const prettyFileIcons = require('pretty-file-icons')
+
 import Vue from 'vue'
 
 export default Vue.extend({
   data: () => ({
-    anexo: null as null | ListaRelatoriosAnexos,
+    anexo: {} as ListaRelatoriosAnexos,
   }),
 
   created: function () {
@@ -55,25 +57,25 @@ export default Vue.extend({
   methods: {
     async carregar() {
       if (this.objeto) {
-        this.anexo = this.objeto
+        //cria com base em objeto
+        this.anexo = new ListaRelatoriosAnexos(this.objeto)
+      } else if (this.codigo) {
+        //cliar por meio do codigo
+        this.anexo = new ListaRelatoriosAnexos()
+        await this.anexo.abrir(this.codigo)
+      } else if (this.classe) {
+        //cria com a classe ja contruida
+        this.anexo = this.classe
       } else {
         this.anexo = new ListaRelatoriosAnexos()
       }
-
-      if (this.codigo && this.anexo) {
-        this.anexo.abrir(this.codigo, true)
-      }
-    },
-
-    icone() {
-      return require('pretty-file-icons/svg/' +
-        prettyFileIcons.getIcon(this.anexo?.objeto.nome_arquivo, 'svg'))
     },
   },
 
   props: {
     codigo: String,
     objeto: Object,
+    classe: Object,
   },
 })
 </script>

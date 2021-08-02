@@ -25,7 +25,7 @@ export default class Usuarios extends Modelo {
   }
 
   //Baixa/abre um recuros pelo código
-  login = async (email: string, senha: string) => {
+  login = async (email: string, senha: string):Promise<void> => {
     const r = await api.post('processos/login', {
       usuario: email.trim(),
       senha: senha,
@@ -40,6 +40,6 @@ export default class Usuarios extends Modelo {
       this.objeto.codigo?.toString() || '',
     )
 
-    return this
+
   }
 }

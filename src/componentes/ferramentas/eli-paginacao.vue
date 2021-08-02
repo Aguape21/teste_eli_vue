@@ -92,7 +92,6 @@ export default Vue.extend({
     }
   },
   created: function () {
-    debugger
     //calcular a quantidade de páginas caso não tenha
     this.quantidadePaginas_ = this.quantidadePaginas
       ? this.quantidadePaginas

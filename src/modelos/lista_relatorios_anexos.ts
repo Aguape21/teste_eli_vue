@@ -14,7 +14,7 @@ export default class ListaRelatoriosAnexos extends Modelo {
     super(objeto)
   }
 
-  baixar = (novaGuia?: boolean) => {
+  baixar = (novaGuia?: boolean):Promise<boolean>  => {
     const url =
       'https://azteca.s3.us-east-1.amazonaws.com/anexos/' +
       this.objeto.codigo_corporativo +
@@ -22,9 +22,16 @@ export default class ListaRelatoriosAnexos extends Modelo {
       this.objeto.codigo_anexo
     return baixar(url, this.objeto.nome_arquivo?.toString(), novaGuia)
   }
+
+  extensao(): string {
+
+    const re = /((\.\w{1,4})?(\.\w+))$/gm
+    const exe = re.exec((this.objeto.nome_arquivo || '').toString())
+    return exe ? exe[0] : '.bin'
+  }
 }
 
-const abrirVariosPorCodigo = async (codigos: string[]) => {
+const abrirVariosPorCodigo = async (codigos: string[]):Promise<ListaRelatoriosAnexos[]>  => {
   const query =
     '{' +
     codigos

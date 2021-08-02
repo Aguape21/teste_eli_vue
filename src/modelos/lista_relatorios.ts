@@ -20,7 +20,7 @@ export default class ListaRelatorios extends Modelo {
     super(objeto)
   }
 
-  baixar = (novaGuia?:boolean) => {
+  baixar = (novaGuia?:boolean) : Promise<boolean>  => {
     const url =
       'https://azteca.s3.us-east-1.amazonaws.com/relatorios/' +
       this.objeto.codigo_corporativo +

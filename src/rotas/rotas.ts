@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import { Route } from 'vue-router'
@@ -13,8 +15,8 @@ Vue.use(VueRouter)
 
 //Classe de grupo de menu
 class GrupoMenu {
-  nome: string = ''
-  icone: string = ''
+  nome = ''
+  icone = ''
   rotas: RouteConfig[] = []
   constructor(nome: string, icone: string, rotas: RouteConfig[]) {
     this.nome = nome

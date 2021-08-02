@@ -3,12 +3,12 @@
         https://metring.com.br/tutorial-momentjs
 */
 
-import { VueConstructor } from "vue"
+import Vue, { VueConstructor } from "vue"
 
-const moment = require('moment')
+import moment from 'moment'
 moment.locale('pt-BR')
 
-const definirGlobal = (Vue:VueConstructor<Vue>) => {
+const definirGlobal = (Vue: VueConstructor<Vue>):void => {
   //Converte uma data e hora para formato 21/07/1988 17h:00min
 
   Vue.prototype.paraDataHoraLocal = (dataHota:string|undefined|null) => {

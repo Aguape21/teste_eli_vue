@@ -24,7 +24,6 @@ export default Vue.extend({
   data: function () {
     return { modalShow: false }
   },
-  created: function () {},
   methods: {},
 })
 </script>

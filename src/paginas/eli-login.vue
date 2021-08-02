@@ -45,27 +45,30 @@ import eli_centro from '../componentes/retratos/eli-centro.vue'
 import eli_logo from '../componentes/ferramentas/eli-logo.vue'
 import Usuarios from '../modelos/usuarios'
 
-  import Vue from 'vue';
-  export default Vue.extend({components: {
+import Vue from 'vue'
+export default Vue.extend({
+  components: {
     'eli-centro': eli_centro,
-  'eli-logo': eli_logo,},
+    'eli-logo': eli_logo,
+  },
 
   data: () => ({
     email: process.env.VUE_APP_TESTE_EMAIL || '',
     senha: process.env.VUE_APP_TESTE_SENHA || '',
     variants: { danger: 'danger', success: 'success' },
     variantAlerta: '',
-    mensagemAlerta: null as null|string,
+    mensagemAlerta: null as null | string,
   }),
 
   methods: {
     async entrar() {
       this.mensagemAlerta = null
       try {
-        const usuario = await new Usuarios().login(this.email, this.senha)
+        const usuario = new Usuarios()
+        await usuario.login(this.email, this.senha)
         this.variantAlerta = this.variants.success
         this.mensagemAlerta = `Bem vindo(a) ${usuario.objeto.nome}.`
-        this.$router.push('passagem');
+        this.$router.push('passagem')
       } catch (error) {
         this.variantAlerta = this.variants.danger
         this.mensagemAlerta = error

@@ -32,16 +32,16 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
           <b-col cols="9">
             <b-row>
               <b-col cols="12">
-                <h2>{{ listaRelatorios.descricao }}</h2>
+                <h2>{{ listaRelatorios.objeto.descricao }}</h2>
 
                 <p>
-                  {{ listaRelatorios.descricao }}
+                  {{ listaRelatorios.objeto.descricao }}
                 </p>
                 Criado por
-                <b>{{ listaRelatorios.nome_usuario_inclusao }}</b>
+                <b>{{ listaRelatorios.objeto.nome_usuario_inclusao }}</b>
                 em
                 <b>
-                  {{ paraDataHoraLocal(listaRelatorios.data_hora_inclusao) }}
+                  {{ paraDataHoraLocal(listaRelatorios.objeto.data_hora_inclusao) }}
                 </b>
               </b-col>
             </b-row>
@@ -77,7 +77,7 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
             <eli-ListaRelatoriosAnexos
               v-for="a in anexos"
               :key="a.codigo"
-              :objeto="a"
+              :classe="a"
             ></eli-ListaRelatoriosAnexos>
           </b-container>
         </b-row>
@@ -162,18 +162,17 @@ export default Vue.extend({
 
   methods: {
     async carregarRelatorio() {
-      this.listaRelatorios = await new ListaRelatorios().abrir(
-        this.codigoRelatorio,
-        true,
-      )
+      this.listaRelatorios = new ListaRelatorios()
+
+      await this.listaRelatorios.abrir(this.codigoRelatorio, true)
 
       if (
-        this.listaRelatorios.objeto.codigos_relatorios_anexos &&
+        this.listaRelatorios?.objeto.codigos_relatorios_anexos &&
         Array.isArray(this.listaRelatorios.objeto.codigos_relatorios_anexos) &&
         this.listaRelatorios.objeto.codigos_relatorios_anexos.length > 0
       ) {
         this.anexos = await abrirVariosPorCodigo(
-          this.listaRelatorios.objeto.codigos_relatorios_anexos
+          this.listaRelatorios?.objeto.codigos_relatorios_anexos
             ?.toString()
             .split(',') || [],
         )
