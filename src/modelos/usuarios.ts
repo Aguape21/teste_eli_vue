@@ -1,12 +1,10 @@
 //Conexão com o recurso de usuarios
 
-
-import { objetoRecurso } from './recurso'
+import { ClasseUsuarios, interfaceUsuarios } from './esquemasRecursos'
 import api from '../plugins/api'
 import autenticacao from '../plugins/autenticacao'
-import { EsquemaUsuarios } from './esquemasRecursos'
 
-export default class Usuarios extends EsquemaUsuarios {
+export default class Usuarios extends ClasseUsuarios {
   recurso = 'usuarios'
   colunas = `codigo_corporativo
               codigo
@@ -21,12 +19,12 @@ export default class Usuarios extends EsquemaUsuarios {
               cadastros_base
 `
 
-  constructor(objeto?: objetoRecurso) {
+  constructor(objeto?: interfaceUsuarios) {
     super(objeto)
   }
 
   //Baixa/abre um recuros pelo código
-  login = async (email: string, senha: string):Promise<void> => {
+  login = async (email: string, senha: string): Promise<void> => {
     const r = await api.post('processos/login', {
       usuario: email.trim(),
       senha: senha,
@@ -40,7 +38,5 @@ export default class Usuarios extends EsquemaUsuarios {
       this.objeto.codigo_corporativo?.toString() || '',
       this.objeto.codigo?.toString() || '',
     )
-
-
   }
 }

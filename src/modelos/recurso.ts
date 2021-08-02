@@ -2,29 +2,30 @@
 
 import api from '../plugins/api'
 
-interface objetoRecurso {
+interface interfaceRecurso {
   [key: string]: string | number | null | undefined | string[]
 }
 
-export { objetoRecurso }
+export { interfaceRecurso }
 
-export default class Recurso {
+export class Recurso {
   //indica o recurso da classe
   // usada para fazer as conexões com a API
   recurso = ''
 
   colunas: string | Array<string> = ''
 
-  private _objeto: objetoRecurso = {}
-    public get objeto(): objetoRecurso {
-        return this._objeto
-    }
-    public set objeto(value: objetoRecurso) {
-        this._objeto = value
-    }
+  public _objeto: interfaceRecurso = {}
+
+  public get objeto(): interfaceRecurso {
+    return this._objeto
+  }
+  public set objeto(value: interfaceRecurso) {
+    this._objeto = value
+  }
 
   //contrução da classe com o objeto
-  constructor(objeto?: objetoRecurso) {
+  constructor(objeto?: interfaceRecurso) {
     this.objeto = objeto || {}
   }
 

@@ -3,9 +3,9 @@
 import { post, get } from './http'
 import autenticacao from './autenticacao'
 import urljoin from 'url-join'
-import { objetoRecurso } from '@/modelos/recurso'
+import { interfaceRecurso } from '@/modelos/recurso'
 interface objetoGrapql {
-  [key: string]: objetoRecurso
+  [key: string]: interfaceRecurso
 }
 
 class API {

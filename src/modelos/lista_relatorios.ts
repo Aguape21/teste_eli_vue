@@ -1,10 +1,10 @@
 //Conexão com o recurso de relatórios
 
-import Recurso from './recurso'
-import { objetoRecurso } from './recurso'
+import {ClasseListaRelatorios} from './esquemasRecursos'
+import { interfaceRecurso } from './recurso'
 import { baixar } from '../plugins/http'
 
-export default class ListaRelatorios extends Recurso {
+export default class ListaRelatorios extends ClasseListaRelatorios {
   recurso = 'lista_relatorios'
   colunas = ` codigo
                 codigo_corporativo
@@ -16,7 +16,7 @@ export default class ListaRelatorios extends Recurso {
                 data_hora_inclusao
 `
 
-  constructor(objeto?:objetoRecurso) {
+  constructor(objeto?:interfaceRecurso) {
     super(objeto)
   }
 

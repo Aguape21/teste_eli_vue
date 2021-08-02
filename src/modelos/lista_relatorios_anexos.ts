@@ -1,16 +1,16 @@
 //Conexão com o recurso de relatórios
 
-import Recurso from './recurso'
-import { objetoRecurso } from './recurso'
+import {ClasseListaRelatoriosAnexos} from './esquemasRecursos'
+import { interfaceRecurso } from './recurso'
 import { baixar } from '../plugins/http'
 import api from '../plugins/api'
 
-export default class ListaRelatoriosAnexos extends Recurso {
+export default class ListaRelatoriosAnexos extends ClasseListaRelatoriosAnexos {
   recurso = 'lista_relatorios_anexos'
   colunas =
     'codigo titulo codigo_corporativo codigo_anexo nome_arquivo descricao observacao ordem'
 
-  constructor(objeto?: objetoRecurso) {
+  constructor(objeto?: interfaceRecurso) {
     super(objeto)
   }
 
