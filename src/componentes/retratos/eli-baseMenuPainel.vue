@@ -131,7 +131,7 @@ export default {
   props: {
     source: String,
   },
-  data: () => ({
+  data: ():any => ({
     drawer: null,
     pagina: 99,
   }),
