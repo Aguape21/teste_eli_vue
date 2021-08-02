@@ -3,9 +3,8 @@
 import { post, get } from './http'
 import autenticacao from './autenticacao'
 import urljoin from 'url-join'
-import { interfaceRecurso } from '@/modelos/recurso'
 interface objetoGrapql {
-  [key: string]: interfaceRecurso
+  [key: string]: any
 }
 
 class API {
@@ -38,6 +37,12 @@ class API {
             resposta(response.data)
           })
           .catch(function (erro_post) {
+            if (
+              erro_post.response?.status == 403 ||
+              erro_post.response?.status == 401
+            ) {
+              autenticacao.deslogar()
+            }
             if (erro_post && erro_post.response && erro_post.response.data) {
               erro(erro_post.response.data)
             } else {
@@ -59,6 +64,12 @@ class API {
             resposta(response.data)
           })
           .catch(function (erro_get) {
+            if (
+              erro_get.response?.status == 403 ||
+              erro_get.response?.status == 401
+            ) {
+              autenticacao.deslogar()
+            }
             if (erro_get && erro_get.response && erro_get.response.data) {
               erro(erro_get.response.data)
             } else {
@@ -87,6 +98,12 @@ class API {
             resposta(response.data.data)
           })
           .catch(function (erro_post) {
+            if (
+              erro_post.response?.status == 403 ||
+              erro_post.response?.status == 401
+            ) {
+              autenticacao.deslogar()
+            }
             erro(erro_post)
           })
       } catch (erro_try) {

@@ -6,6 +6,9 @@ import autenticacao from '../plugins/autenticacao'
 
 export default class Usuarios extends ClasseUsuarios {
   recurso = 'usuarios'
+
+  bearer = ''
+
   colunas = `codigo_corporativo
               codigo
               nome
@@ -31,12 +34,15 @@ export default class Usuarios extends ClasseUsuarios {
     })
 
     this.objeto = r[0]
+    this.bearer = ((r[0].bearer)?.toString()) || ''
 
     //gravar dados de autenticação
     autenticacao.gravar(
-      this.objeto.bearer?.toString() || '',
-      this.objeto.codigo_corporativo?.toString() || '',
-      this.objeto.codigo?.toString() || '',
+      this.bearer?.toString() || '',
+      this.codigoCorporativo?.toString() || '',
+      this.codigo?.toString() || '',
     )
   }
 }
+
+

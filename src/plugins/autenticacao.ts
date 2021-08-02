@@ -1,27 +1,37 @@
 //funcões relacionadas com a autenticação
 
+import { router } from '@/rotas/rotas'
+
 class Autenticacao {
-  #lsSet = (chave:string, valor:string|null) => {
+  //Grava no local storage
+  #lsSet = (chave: string, valor: string | null) => {
     localStorage.setItem('ngStorage-' + chave, `"${valor}"`)
   }
 
-  #lsApaga = (chave:string):void => {
+  //apaga local storage
+  #lsApaga = (chave: string): void => {
     localStorage.removeItem(chave)
   }
 
-  #ls = (chave:string):string|null => {
-    const valor:string|null = localStorage.getItem('ngStorage-' + chave)
+  //le registro do local sotorage
+  #ls = (chave: string): string | null => {
+    const valor: string | null = localStorage.getItem('ngStorage-' + chave)
     return valor ? valor.replace(/"/gm, '') : valor
   }
 
-  gravar = (bearer:string, codigoCorporativo:string, codigoUsuario:string):void => {
+  //grava dados base para autenticação
+  gravar = (
+    bearer: string,
+    codigoCorporativo: string,
+    codigoUsuario: string,
+  ): void => {
     //grava todas as autenticacoes
     this.bearer = bearer
     this.codigoCorporativo = codigoCorporativo
     this.codigoUsuario = codigoUsuario
   }
 
-  get bearer():string|null {
+  get bearer(): string | null {
     return this.#ls('bearer')
   }
 
@@ -45,19 +55,20 @@ class Autenticacao {
     this.#lsSet('codigoUsuario', codigoUsuario)
   }
 
+  //limpa dados de utenticação
   limpar = () => {
     this.#lsApaga('bearer')
     this.#lsApaga('codigoCorporativo')
     this.#lsApaga('codigoUsuario')
   }
 
+  //valida se conta está autenticada
   autenticado = () => {
-    //valida se conta está autenticada
-
     try {
       //virificar se tem bearer
 
-      if (this.bearer || this.bearer != '') {
+
+      if (this.bearer && this.bearer != '') {
         return true
       }
 
@@ -67,6 +78,17 @@ class Autenticacao {
       this.limpar()
       return false
     }
+  }
+
+  deslogar = () => {
+
+    this.#lsApaga('bearer')
+    const url = router.resolve({
+      name: 'login',
+      query: { redirecionar: window.location.href },
+    })
+
+    window.location.href = url.href
   }
 }
 

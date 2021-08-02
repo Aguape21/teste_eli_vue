@@ -53,4 +53,20 @@ export class Recurso {
       this.objeto = busca[this.recurso]
     }
   }
+
+  //Baixa/abre um recuros pelo código
+  buscarVarios = async (): Promise<interfaceRecurso[]> => {
+    const query = `{
+      ${this.recurso}_varios{
+        ${(typeof this.colunas == 'string'
+          ? this.colunas.trim().split(/[\s,;]+/gm)
+          : this.colunas
+        ).join(', ')}
+      }
+      }`
+
+    const busca = await api.graphql(query)
+
+    return busca ? busca[`${this.recurso}_varios`] : []
+  }
 }
