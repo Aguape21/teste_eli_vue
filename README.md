@@ -68,7 +68,7 @@ try {
 }
 })
 ´´´
-Modelo de componente
+Recurso de componente
 ´´´
 <template><componente /></template> <script> import componente from 'componente.vue';   import Vue from 'vue';
   export default Vue.extend({components: { componente: componente }, props: ['value'], data: function () { return { teste: true } }, created: function () { this.mudarTeste() }, methods: { atualizarVModel() { this.$emit('input', this.value) }, mudarTeste() { this.teste = false }, }, } </script> <style scoped> </style>

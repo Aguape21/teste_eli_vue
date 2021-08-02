@@ -1,4 +1,4 @@
-//Modelo padrão para classes relacionadas à recursos
+//Recurso padrão para classes relacionadas à recursos
 
 import api from '../plugins/api'
 
@@ -8,14 +8,20 @@ interface objetoRecurso {
 
 export { objetoRecurso }
 
-export default class Modelo {
+export default class Recurso {
   //indica o recurso da classe
   // usada para fazer as conexões com a API
   recurso = ''
 
   colunas: string | Array<string> = ''
 
-  objeto: objetoRecurso = {}
+  private _objeto: objetoRecurso = {}
+    public get objeto(): objetoRecurso {
+        return this._objeto
+    }
+    public set objeto(value: objetoRecurso) {
+        this._objeto = value
+    }
 
   //contrução da classe com o objeto
   constructor(objeto?: objetoRecurso) {

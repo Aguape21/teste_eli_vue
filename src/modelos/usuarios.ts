@@ -1,11 +1,12 @@
 //Conexão com o recurso de usuarios
 
-import Modelo from './recurso'
+
 import { objetoRecurso } from './recurso'
 import api from '../plugins/api'
 import autenticacao from '../plugins/autenticacao'
+import { EsquemaUsuarios } from './esquemasRecursos'
 
-export default class Usuarios extends Modelo {
+export default class Usuarios extends EsquemaUsuarios {
   recurso = 'usuarios'
   colunas = `codigo_corporativo
               codigo

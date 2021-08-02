@@ -1,11 +1,11 @@
 //Conexão com o recurso de relatórios
 
-import Modelo from './recurso'
+import Recurso from './recurso'
 import { objetoRecurso } from './recurso'
 import { baixar } from '../plugins/http'
 import api from '../plugins/api'
 
-export default class ListaRelatoriosAnexos extends Modelo {
+export default class ListaRelatoriosAnexos extends Recurso {
   recurso = 'lista_relatorios_anexos'
   colunas =
     'codigo titulo codigo_corporativo codigo_anexo nome_arquivo descricao observacao ordem'
