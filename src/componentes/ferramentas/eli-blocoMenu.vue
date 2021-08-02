@@ -53,7 +53,6 @@ export default Vue.extend({
   data: function () {
     return { uuid: uuid() }
   },
-  created: function () {},
   methods: {},
 })
 </script>

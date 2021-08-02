@@ -22,7 +22,6 @@ export default Vue.extend({
   data: function () {
     return { gruposMenu }
   },
-  created: function () {},
   methods: {},
 })
 </script>

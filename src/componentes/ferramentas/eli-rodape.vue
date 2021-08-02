@@ -2,9 +2,7 @@
   <footer id="rodape">
     <div class="rodape-copyright">
       <p><eli-logo width="120px" tipo="branco"></eli-logo></p>
-      <p>
-        2018-{{ano}} © Azteca Software LTDA
-      </p>
+      <p>2018-{{ ano }} © Azteca Software LTDA</p>
       <p>
         <b>
           <eli-linkModalIframe
@@ -47,20 +45,20 @@
 import eli_logo from './eli-logo.vue'
 import eli_linkModalIframe from './eli-linkModalIframe.vue'
 
-
-  import Vue from 'vue';
-  export default Vue.extend({components: {
+import Vue from 'vue'
+export default Vue.extend({
+  components: {
     'eli-logo': eli_logo,
     'eli-linkModalIframe': eli_linkModalIframe,
   },
 
   data: function () {
     return {
-      ano:''
+      ano: '',
     }
   },
   created: function () {
-    this.ano = require('moment')().format('YYYY')
+    this.ano = this.anoHoje()
   },
 
   methods: {

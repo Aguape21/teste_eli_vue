@@ -10,6 +10,7 @@ Vue.use(InstalarCarregando)
 declare module 'vue/types/vue' {
   interface Vue {
    carregando: (a: Promise<any>) => Promise<boolean>
+   anoHoje:()=>string
   } 
 }
 

@@ -23,7 +23,7 @@ export default Vue.extend({
   data: function () {
     return { teste: true }
   },
-  created: function () {},
+
   methods: {},
 })
 </script>

@@ -117,7 +117,7 @@ import eli_celulaConsulta from '../ferramentas/tabela-consulta/eli-celulaConsult
 import eli_paginacao from '../ferramentas/eli-paginacao.vue'
 
 export default {
-  created() {},
+ 
 
   components: {
     'eli-logo': eli_logo,

@@ -82,7 +82,6 @@ module.exports = {
       //teste: true,
     };
   },
-  created: function () {},
 
   methods: {
     //teste() {},
