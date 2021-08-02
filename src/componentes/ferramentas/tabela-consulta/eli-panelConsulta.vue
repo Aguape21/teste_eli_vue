@@ -19,20 +19,26 @@ recursos
         :key="linha.codigo"
         :style="{ 'background-color': idz % 2 ? '#E9FFF4' : '#ffffff' }"
       >
-        <b-col cols="6" sm="4" md="2">
-          <eli-celulaConsulta titulo="Empreendedor">
-            José Carlos da Silva
-          </eli-celulaConsulta>
+        <b-col cols="12" sm="11" md="11">
+          <b-row>
+            <b-col
+              v-for="(coluna, idzC) in colunas"
+              :key="'celula-' + idzC + linha.codigo"
+              :cols="coluna.tamanho * 3 < 12 ? coluna.tamanho * 3 : 12"
+              :sm="coluna.tamanho * 2 < 12 ? coluna.tamanho * 2 : 12"
+              :md="coluna.tamanho"
+            >
+              <eli-celulaConsulta
+                :titulo="coluna.titulo"
+                v-if="coluna.valor(linha) && coluna.valor(linha) != ''"
+              >
+                {{ coluna.valor(linha) }}
+              </eli-celulaConsulta>
+            </b-col>
+          </b-row>
         </b-col>
 
-        <b-col cols="12" sm="8" md="4">
-          <eli-celulaConsulta />
-        </b-col>
-
-        <b-col cols="12" sm="8" md="4">
-          <eli-celulaConsulta />
-        </b-col>
-        <b-col cols="1" sm="1" md="1">
+        <b-col cols="12" sm="1" md="1">
           <b-button v-b-toggle="'acoes-' + linha.codigo" variant="primary">
             <b-icon
               icon="question-circle-fill"
@@ -80,7 +86,7 @@ export default Vue.extend({
     'eli-celulaConsulta': eli_celulaConsulta,
     'eli-paginacao': eli_paginacao,
   },
-  props: { value: String, linhas: Array },
+  props: { value: String, linhas: Array, colunas: Array },
   data: function () {
     return { pagina: 99 as number }
   },

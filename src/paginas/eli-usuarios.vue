@@ -1,6 +1,6 @@
 <template>
   <eli-baseMenuPainel>
-    <eli-panelConsulta :linhas="linhas"></eli-panelConsulta>
+    <eli-panelConsulta :linhas="linhas" :colunas="colunas"></eli-panelConsulta>
   </eli-baseMenuPainel>
 </template>
 
@@ -18,6 +18,26 @@ export default Vue.extend({
 
   data: () => ({
     linhas: [] as Usuarios[],
+    colunas: [
+      { titulo: 'Cargo', valor: (item: Usuarios) => item.cargo, tamanho: 2 },
+      { titulo: 'Nome', valor: (item: Usuarios) => item.nome, tamanho: 2 },
+      { titulo: 'E-mail', valor: (item: Usuarios) => item.email, tamanho: 3 },
+      {
+        titulo: 'Telefone',
+        valor: (item: Usuarios) => item.telefone,
+        tamanho: 2,
+      },
+      {
+        titulo: 'Adminstrador',
+        valor: (item: Usuarios) => (item.administrador == 'S' ? 'Sim' : 'Não'),
+        tamanho: 1,
+      },
+      {
+        titulo: 'Cadastros Base',
+        valor: (item: Usuarios) => (item.cadastrosBase == 'S' ? 'Sim' : 'Não'),
+        tamanho: 1,
+      },
+    ],
   }),
 
   created: function () {
