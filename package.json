@@ -62,8 +62,7 @@
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended",
-      "@vue/typescript/recommended",
-      "dist"
+      "@vue/typescript/recommended"
     ],
     "parserOptions": {
       "ecmaVersion": 2020
