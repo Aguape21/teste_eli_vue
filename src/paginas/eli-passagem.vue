@@ -13,7 +13,6 @@
       </li>
 
       <li>
-        
         <router-link
           :to="{
             name: 'login',
@@ -32,16 +31,24 @@
           Usuários
         </router-link>
       </li>
+
+      <li>
+        <button @click="autenticacao.bearer = '12345'">
+          Vencer Autenticação
+        </button>
+      </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
+import autenticacao from '@/plugins/autenticacao'
 import Vue from 'vue'
+
 export default Vue.extend({
   components: {},
 
-  data: () => ({}),
+  data: () => ({ autenticacao }),
 
   methods: {},
 })

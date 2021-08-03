@@ -10,7 +10,7 @@ class Autenticacao {
 
   //apaga local storage
   #lsApaga = (chave: string): void => {
-    localStorage.removeItem(chave)
+    localStorage.removeItem('ngStorage-' + chave)
   }
 
   //le registro do local sotorage
@@ -67,7 +67,6 @@ class Autenticacao {
     try {
       //virificar se tem bearer
 
-
       if (this.bearer && this.bearer != '') {
         return true
       }
@@ -81,14 +80,15 @@ class Autenticacao {
   }
 
   deslogar = () => {
+    if (this.autenticado()) {
+      this.#lsApaga('bearer')
+      const url = router.resolve({
+        name: 'login',
+        query: { redirecionar: window.location.href },
+      })
 
-    this.#lsApaga('bearer')
-    const url = router.resolve({
-      name: 'login',
-      query: { redirecionar: window.location.href },
-    })
-
-    window.location.href = url.href
+      window.location.href = url.href
+    }
   }
 }
 

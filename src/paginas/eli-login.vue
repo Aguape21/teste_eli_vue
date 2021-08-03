@@ -68,7 +68,11 @@ export default Vue.extend({
         await usuario.login(this.email, this.senha)
         this.variantAlerta = this.variants.success
         this.mensagemAlerta = `Bem vindo(a) ${usuario.objeto.nome}.`
-        this.$router.push('passagem')
+        if (this.$route.query.redirecionar) {
+          window.location.href = this.$route.query.redirecionar.toString()
+        } else {
+          this.$router.push('passagem')
+        }
       } catch (error) {
         this.variantAlerta = this.variants.danger
         this.mensagemAlerta = error

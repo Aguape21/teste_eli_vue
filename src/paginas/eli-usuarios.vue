@@ -28,7 +28,7 @@ export default Vue.extend({
         tamanho: 2,
       },
       {
-        titulo: 'Adminstrador',
+        titulo: 'Administrador',
         valor: (item: Usuarios) => (item.administrador == 'S' ? 'Sim' : 'Não'),
         tamanho: 1,
       },
