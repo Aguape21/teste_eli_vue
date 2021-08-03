@@ -40,7 +40,7 @@
         </v-navigation-drawer>
 
         <v-main>
-          <slot />
+          <slot> </slot>
         </v-main>
         <eli-rodape></eli-rodape>
       </v-app>

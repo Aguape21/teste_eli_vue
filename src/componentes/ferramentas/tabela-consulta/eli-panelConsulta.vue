@@ -9,7 +9,7 @@ recursos
   <v-container style="min-height: 500px;" fluid class="grey lighten-4">
     <b-row>
       <b-col cols="12">
-        <eli-barraNavegacao />
+        <eli-barraNavegacao></eli-barraNavegacao>
       </b-col>
     </b-row>
 
@@ -77,7 +77,7 @@ recursos
 import Vue from 'vue'
 
 import eli_barraNavegacao from '../eli-barraNavegacao.vue'
-import eli_celulaConsulta from '../tabela-consulta/eli-celulaConsulta.vue'
+import eli_celulaConsulta from './eli-celulaMoldura.vue'
 import eli_paginacao from '../eli-paginacao.vue'
 
 export default Vue.extend({

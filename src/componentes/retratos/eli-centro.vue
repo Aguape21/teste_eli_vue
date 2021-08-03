@@ -4,7 +4,7 @@
       <v-main>
         <v-container fluid>
           <v-row align="center" justify="center">
-            <slot />
+            <slot> </slot>
           </v-row>
         </v-container>
       </v-main>
