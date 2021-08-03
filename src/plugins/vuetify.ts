@@ -1,16 +1,16 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
+/*
+Tutorial para icones
+https://vuetifyjs.com/en/features/icon-fonts/#material-icons
+*/
+
+import Vue from 'vue'
+import Vuetify from 'vuetify/lib/framework'
+import '@mdi/font/css/materialdesignicons.css'
 
 Vue.use(Vuetify)
 
-const vuetify = new Vuetify({
-  theme: {
-    themes: {
-      light: {
-        primary: '#688c00',
-      },
-    },
+export default new Vuetify({
+  icons: {
+    iconfont: 'mdi', // default - only for display purposes
   },
 })
-
-export default vuetify

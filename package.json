@@ -32,6 +32,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@mdi/font": "^5.9.55",
     "@types/mime-types": "^2.1.0",
     "@types/node": "^16.4.9",
     "@types/url-join": "^4.0.1",
@@ -67,7 +68,10 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": { "no-debugger": "off","@typescript-eslint/no-explicit-any": "off" }
+    "rules": {
+      "no-debugger": "off",
+      "@typescript-eslint/no-explicit-any": "off"
+    }
   },
   "browserslist": [
     "> 1%",

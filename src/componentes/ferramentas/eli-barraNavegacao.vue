@@ -49,13 +49,8 @@ export default Vue.extend({
   data: function () {
     return { teste: true }
   },
-  created: function () {
-
-  },
-  methods: {
-
-
-  },
+  //created: function ():void {},
+  methods: {},
 })
 </script>
 <style></style>

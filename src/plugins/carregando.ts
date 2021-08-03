@@ -22,7 +22,7 @@ import eli_carregando from '../componentes/ferramentas/eli-carregando.vue'
 let vm: any = {}
 
 const InstalarCarregando = {
-  install(Vue: VueConstructor<Vue>) {
+  install(Vue: VueConstructor<Vue>):void {
     const loadingPlugin = Vue.extend(eli_carregando)
     vm = new loadingPlugin({
       data: configuracaoCarregando,

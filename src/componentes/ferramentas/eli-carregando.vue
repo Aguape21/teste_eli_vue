@@ -17,7 +17,7 @@
 </template>
 <script lang="ts">
 export default {
-  data() {
+  data():any {
     return {
       text: 'Loading',
       classes: null,
