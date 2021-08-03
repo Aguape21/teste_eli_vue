@@ -19,7 +19,7 @@ recursos
         :key="linha.codigo"
         :style="{ 'background-color': idz % 2 ? '#E9FFF4' : '#ffffff' }"
       >
-        <b-col cols="12" sm="11" md="11">
+        <b-col cols="12" sm="10" md="11">
           <b-row>
             <b-col
               v-for="(coluna, idzC) in colunas"
@@ -28,17 +28,17 @@ recursos
               :sm="coluna.tamanho * 2 < 12 ? coluna.tamanho * 2 : 12"
               :md="coluna.tamanho"
             >
-              <eli-celulaConsulta
+              <eli-celula
                 :titulo="coluna.titulo"
+                :valor="coluna.valor(linha)"
+                :tipo="coluna.tipo"
                 v-if="coluna.valor(linha) && coluna.valor(linha) != ''"
-              >
-                {{ coluna.valor(linha) }}
-              </eli-celulaConsulta>
+              ></eli-celula>
             </b-col>
           </b-row>
         </b-col>
 
-        <b-col cols="12" sm="1" md="1">
+        <b-col cols="12" sm="2" md="1">
           <b-button v-b-toggle="'acoes-' + linha.codigo" variant="primary">
             <b-icon
               icon="question-circle-fill"
@@ -77,13 +77,13 @@ recursos
 import Vue from 'vue'
 
 import eli_barraNavegacao from '../eli-barraNavegacao.vue'
-import eli_celulaConsulta from './eli-celulaMoldura.vue'
+import eli_celula from './eli-celula.vue'
 import eli_paginacao from '../eli-paginacao.vue'
 
 export default Vue.extend({
   components: {
     'eli-barraNavegacao': eli_barraNavegacao,
-    'eli-celulaConsulta': eli_celulaConsulta,
+    'eli-celula': eli_celula,
     'eli-paginacao': eli_paginacao,
   },
   props: { value: String, linhas: Array, colunas: Array },

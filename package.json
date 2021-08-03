@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/uuid": "^8.3.1",
+    "awesome-phonenumber": "^2.55.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",

@@ -21,6 +21,7 @@ import {
   FaAngleLeft,
   FaAngleDoubleRight,
   FaAngleRight,
+  BiTelephoneForwardFill,
 } from 'oh-vue-icons/icons'
 OhVueIcon.add(
   BiWhatsapp, //  <oh-icon name="bi-whatsapp" />
@@ -35,6 +36,7 @@ OhVueIcon.add(
   FaAngleLeft, //  <oh-icon name="fa-angle-left" />
   FaAngleDoubleRight, //   <oh-icon name="fa-angle-double-right" />
   FaAngleRight, // <oh-icon name="fa-angle-right" />
+  BiTelephoneForwardFill, // <oh-icon name="bi-telephone-forward-fill" />
 )
 
 export default OhVueIcon

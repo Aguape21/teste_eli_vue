@@ -21,11 +21,17 @@ export default Vue.extend({
     colunas: [
       { titulo: 'Cargo', valor: (item: Usuarios) => item.cargo, tamanho: 2 },
       { titulo: 'Nome', valor: (item: Usuarios) => item.nome, tamanho: 2 },
-      { titulo: 'E-mail', valor: (item: Usuarios) => item.email, tamanho: 3 },
+      {
+        titulo: 'E-mail',
+        valor: (item: Usuarios) => item.email,
+        tamanho: 3,
+        tipo: 'email',
+      },
       {
         titulo: 'Telefone',
         valor: (item: Usuarios) => item.telefone,
         tamanho: 2,
+        tipo: 'telefone',
       },
       {
         titulo: 'Administrador',

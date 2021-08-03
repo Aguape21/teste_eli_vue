@@ -1,14 +1,22 @@
 <template>
   <eli-celulaMoldura :titulo="titulo">
-
     <!-- Tipo e-mail -->
     <div v-if="tipo == 'email'">
-      <a :href="'mailto:' + valor">{{ valor }}</a>
+      {{ valor }}
+      <a target="_blank" :href="'mailto:' + valor">
+        <oh-icon name="md-email-outlined" />
+      </a>
     </div>
-    
+
     <!-- Tipo telefone -->
     <div v-else-if="tipo == 'telefone'">
-      <a :href="'tel:' + valor">{{ valor }}</a>
+      {{ numeroNacional(valor) }}
+      <a target="_blank" :href="linkLigacao(valor)">
+        <oh-icon name="bi-telephone-forward-fill" />
+      </a>
+      <a target="_blank" :href="linkWhatsApp(valor)">
+        <oh-icon name="bi-whatsapp" />
+      </a>
     </div>
 
     <!-- Tipo texto padrão -->
@@ -20,6 +28,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import eli_celulaMoldura from '@/componentes/ferramentas/tabela-consulta/eli-celulaMoldura.vue'
+import { linkWhatsApp, linkLigacao, numeroNacional } from '@/plugins/telefone'
 
 export default Vue.extend({
   components: {
@@ -33,18 +42,15 @@ export default Vue.extend({
   },
   data: function () {
     return {
-      teste: true,
+      linkWhatsApp,
+      linkLigacao,
+      numeroNacional,
     }
   },
-  created: function () {
-    this.mudarTeste()
-  },
+  //created: function () {},
   methods: {
     atualizarVModel() {
       this.$emit('input', this.value)
-    },
-    mudarTeste() {
-      this.teste = false
     },
   },
 })
