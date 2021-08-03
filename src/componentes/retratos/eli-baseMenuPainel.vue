@@ -50,9 +50,9 @@
 
 <script lang="ts">
 /* eslint-disable vue/no-unused-components */
-import eli_logo from '../ferramentas/eli-logo.vue'
-import eli_rodape from '../ferramentas/eli-rodape.vue'
-import eli_menu from '../ferramentas/eli-menu.vue'
+import eli_logo from '@/componentes/ferramentas/eli-logo.vue'
+import eli_rodape from '@/componentes/ferramentas/eli-rodape.vue'
+import eli_menu from '@/componentes/ferramentas/eli-menu.vue'
 
 
 export default {

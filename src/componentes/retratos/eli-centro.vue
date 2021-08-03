@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import eli_rodape from '../ferramentas/eli-rodape.vue'
+import eli_rodape from '@/componentes/ferramentas/eli-rodape.vue'
 
 import Vue from 'vue'
 export default Vue.extend({

@@ -5,9 +5,10 @@
 </template>
 
 <script lang="ts">
-import eli_baseMenuPainel from '../retratos/eli-baseMenuPainel.vue'
-import eli_panelConsulta from '../ferramentas/tabela-consulta/eli-panelConsulta.vue'
-import Usuarios from '../../modelos/usuarios'
+import eli_baseMenuPainel from '@/componentes/retratos/eli-baseMenuPainel.vue'
+import eli_panelConsulta from '@/componentes/ferramentas/tabela-consulta/eli-panelConsulta.vue'
+import Usuarios from '@/modelos/usuarios'
+import {interfaceColuna} from '@/componentes/interfacesParaComponentes'
 
 import Vue from 'vue'
 export default Vue.extend({
@@ -43,7 +44,7 @@ export default Vue.extend({
         valor: (item: Usuarios) => (item.cadastrosBase == 'S' ? 'Sim' : 'Não'),
         tamanho: 1,
       },
-    ],
+    ] as interfaceColuna[],
   }),
 
   created: function () {

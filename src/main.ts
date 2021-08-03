@@ -1,11 +1,12 @@
 import Vue from 'vue'
+
 Vue.config.productionTip = false
 
-import App from './App.vue'
-import vuetify from './plugins/vuetify'
-import {router} from './rotas/rotas'
+import App from '@/App.vue'
+import vuetify from '@/plugins/vuetify'
+import {router} from '@/rotas/rotas'
 
-import InstalarCarregando from './plugins/carregando'
+import InstalarCarregando from '@/plugins/carregando'
 Vue.use(InstalarCarregando)
 declare module 'vue/types/vue' {
   interface Vue {
@@ -29,7 +30,7 @@ Vue.use(IconsPlugin)
 Vue.use(BootstrapVueIcons)
 
 //carregar funcoes de momentJS
-import momentJS from './plugins/momentJS'
+import momentJS from '@/plugins/momentJS'
 momentJS(Vue)
 
 //rastreio google analytcs
@@ -51,7 +52,7 @@ Vue.use(VueTour)
 
 
 //icones
-import OhVueIcon from './plugins/icones'
+import OhVueIcon from '@/plugins/icones'
 Vue.component('oh-icon', OhVueIcon)
 
 new Vue({

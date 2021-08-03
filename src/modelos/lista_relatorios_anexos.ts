@@ -1,9 +1,9 @@
 //Conexão com o recurso de relatórios
 
-import {ClasseListaRelatoriosAnexos} from './esquemasRecursos'
-import { interfaceRecurso } from './recurso'
-import { baixar } from '../plugins/http'
-import api from '../plugins/api'
+import {ClasseListaRelatoriosAnexos} from '@/modelos/esquemasRecursos'
+import { interfaceRecurso } from '@/modelos/recurso'
+import { baixar } from '@/plugins/http'
+import api from '@/plugins/api'
 
 export default class ListaRelatoriosAnexos extends ClasseListaRelatoriosAnexos {
   recurso = 'lista_relatorios_anexos'

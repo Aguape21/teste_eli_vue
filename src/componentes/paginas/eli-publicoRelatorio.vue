@@ -88,19 +88,19 @@ localhost:8080/#/publico/relatorios/fc570aff-d5c0-4d03-9466-42f9bfba9254
 
 <script lang="ts">
 //template de página
-import eli_centro from '../retratos/eli-centro.vue'
+import eli_centro from '@/componentes/retratos/eli-centro.vue'
 //template de linha de anexo
-import eli_ListaRelatoriosAnexos from '../recursos/eli-ListaRelatoriosAnexos.vue'
+import eli_ListaRelatoriosAnexos from '@/componentes/recursos/eli-ListaRelatoriosAnexos.vue'
 //modelo de objeto
-import ListaRelatorios from '../../modelos/lista_relatorios'
+import ListaRelatorios from '@/modelos/lista_relatorios'
 //modelo anexos
 import ListaRelatoriosAnexos, {
   abrirVariosPorCodigo,
-} from '../../modelos/lista_relatorios_anexos'
+} from '@/modelos/lista_relatorios_anexos'
 //botao de ajuda
-import botaoAjuda from '../ferramentas/eli-botaoAjuda.vue'
+import botaoAjuda from '@/componentes/ferramentas/eli-botaoAjuda.vue'
 //importar logo
-import eli_logo from '../ferramentas/eli-logo.vue'
+import eli_logo from '@/componentes/ferramentas/eli-logo.vue'
 
 import Vue from 'vue'
 export default Vue.extend({

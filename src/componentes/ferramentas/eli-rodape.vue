@@ -42,8 +42,8 @@
 </template>
 
 <script lang="ts">
-import eli_logo from './eli-logo.vue'
-import eli_linkModalIframe from './eli-linkModalIframe.vue'
+import eli_logo from '@/componentes/ferramentas/eli-logo.vue'
+import eli_linkModalIframe from '@/componentes/ferramentas/eli-linkModalIframe.vue'
 
 import Vue from 'vue'
 export default Vue.extend({

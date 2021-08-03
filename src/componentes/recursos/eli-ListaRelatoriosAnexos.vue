@@ -41,7 +41,7 @@ Componente para exibição de anexo em linha de tabela
   </div>
 </template>
 <script lang="ts">
-import ListaRelatoriosAnexos from '../../modelos/lista_relatorios_anexos'
+import ListaRelatoriosAnexos from '@/modelos/lista_relatorios_anexos'
 
 import Vue from 'vue'
 

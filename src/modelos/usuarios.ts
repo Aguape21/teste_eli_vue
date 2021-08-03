@@ -1,8 +1,8 @@
 //Conexão com o recurso de usuarios
 
-import { ClasseUsuarios, interfaceUsuarios } from './esquemasRecursos'
-import api from '../plugins/api'
-import autenticacao from '../plugins/autenticacao'
+import { ClasseUsuarios, interfaceUsuarios } from '@/modelos/esquemasRecursos'
+import api from '@/plugins/api'
+import autenticacao from '@/plugins/autenticacao'
 
 export default class Usuarios extends ClasseUsuarios {
   recurso = 'usuarios'

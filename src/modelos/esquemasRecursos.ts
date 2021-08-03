@@ -4,7 +4,7 @@
     É um espelho fiel das tabelas do banco de dados.
 */
 
-import { Recurso, interfaceRecurso } from './recurso'
+import { Recurso, interfaceRecurso } from '@/modelos/recurso'
 
 export interface interfaceAcessos extends interfaceRecurso {
   codigo_corporativo?: string

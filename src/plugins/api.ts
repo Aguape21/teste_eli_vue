@@ -1,7 +1,7 @@
 //Biblioteca de conexão com API
 
-import { post, get } from './http'
-import autenticacao from './autenticacao'
+import { post, get } from '@/plugins/http'
+import autenticacao from '@/plugins/autenticacao'
 import urljoin from 'url-join'
 interface objetoGrapql {
   [key: string]: any

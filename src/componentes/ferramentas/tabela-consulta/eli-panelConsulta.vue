@@ -76,9 +76,9 @@ recursos
 <script lang="ts">
 import Vue from 'vue'
 
-import eli_barraNavegacao from '../eli-barraNavegacao.vue'
-import eli_celula from './eli-celula.vue'
-import eli_paginacao from '../eli-paginacao.vue'
+import eli_barraNavegacao from '@/componentes/ferramentas/eli-barraNavegacao.vue'
+import eli_celula from '@/componentes/ferramentas/tabela-consulta/eli-celula.vue'
+import eli_paginacao from '@/componentes/ferramentas/eli-paginacao.vue'
 
 export default Vue.extend({
   components: {

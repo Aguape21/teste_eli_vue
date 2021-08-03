@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import { Route } from 'vue-router'
-import autenticacao from '../plugins/autenticacao'
+import autenticacao from '@/plugins/autenticacao'
 
 //Importar componentes do tipo páginas
 import eli_login from '@/componentes/paginas/eli-login.vue'

@@ -1,8 +1,8 @@
 //Conexão com o recurso de relatórios
 
-import {ClasseListaRelatorios} from './esquemasRecursos'
-import { interfaceRecurso } from './recurso'
-import { baixar } from '../plugins/http'
+import {ClasseListaRelatorios} from '@/modelos/esquemasRecursos'
+import { interfaceRecurso } from '@/modelos/recurso'
+import { baixar } from '@/plugins/http'
 
 export default class ListaRelatorios extends ClasseListaRelatorios {
   recurso = 'lista_relatorios'

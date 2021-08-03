@@ -10,8 +10,8 @@
   </div>
 </template>
 <script lang="ts">
-import eli_blocoMenu from './eli-blocoMenu.vue'
-import { gruposMenu } from '../../rotas/rotas'
+import eli_blocoMenu from '@/componentes/ferramentas/eli-blocoMenu.vue'
+import { gruposMenu } from '@/rotas/rotas'
 
 import Vue from 'vue'
 export default Vue.extend({

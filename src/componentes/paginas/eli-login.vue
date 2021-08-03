@@ -41,9 +41,9 @@
 </template>
 
 <script lang="ts">
-import eli_centro from '../retratos/eli-centro.vue'
-import eli_logo from '../ferramentas/eli-logo.vue'
-import Usuarios from '../../modelos/usuarios'
+import eli_centro from '@/componentes/retratos/eli-centro.vue'
+import eli_logo from '@/componentes/ferramentas/eli-logo.vue'
+import Usuarios from '@/modelos/usuarios'
 
 import Vue from 'vue'
 export default Vue.extend({

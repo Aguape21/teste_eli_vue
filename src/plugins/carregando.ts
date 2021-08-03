@@ -17,7 +17,7 @@ const configuracaoCarregando = {
   //classes: ['myclass'] // array, object or string
 }
 
-import eli_carregando from '../componentes/ferramentas/eli-carregando.vue'
+import eli_carregando from '@/componentes/ferramentas/eli-carregando.vue'
 
 let vm: any = {}
 
