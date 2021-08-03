@@ -6,10 +6,10 @@ import { Route } from 'vue-router'
 import autenticacao from '../plugins/autenticacao'
 
 //Importar componentes do tipo páginas
-import eli_login from '../paginas/eli-login.vue'
-import eli_publicoRelatorio from '../paginas/eli-publicoRelatorio.vue'
-import eli_passagem from '../paginas/eli-passagem.vue'
-import eli_usuarios from '../paginas/eli-usuarios.vue'
+import eli_login from '@/componentes/paginas/eli-login.vue'
+import eli_publicoRelatorio from '@/componentes/paginas/eli-publicoRelatorio.vue'
+import eli_passagem from '@/componentes/paginas/eli-passagem.vue'
+import eli_usuarios from '@/componentes/paginas/eli-usuarios.vue'
 
 Vue.use(VueRouter)
 

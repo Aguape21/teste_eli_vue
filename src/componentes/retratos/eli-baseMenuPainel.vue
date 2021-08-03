@@ -2,7 +2,7 @@
   <div id="app">
     <v-app id="inspire">
       <v-app id="keep">
-        <v-app-bar app clipped-left color="primary" dark>
+        <v-app-bar app clipped-left color="#688c00" dark>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer">
             <oh-icon name="fa-bars" />
           </v-app-bar-nav-icon>
