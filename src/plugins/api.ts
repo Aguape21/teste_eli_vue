@@ -3,8 +3,10 @@
 import { post, get } from '@/plugins/http'
 import autenticacao from '@/plugins/autenticacao'
 import urljoin from 'url-join'
+import { interfaceRecurso } from '@/modelos/recurso'
+
 interface objetoGrapql {
-  [key: string]: any
+  [key: string]: any// interfaceRecurso | interfaceRecurso[] | null | number
 }
 
 class API {
@@ -29,7 +31,7 @@ class API {
   post = async (
     caminho: string,
     valor: { [key: string]: string | number | null },
-  ): Promise<{ [key: string]: string | number | null }[]> =>
+  ): Promise<interfaceRecurso[]> =>
     new Promise((resposta, erro) => {
       try {
         post(this.#montarUrl(caminho), valor, this.#cabecalho())
@@ -54,9 +56,7 @@ class API {
       }
     })
 
-  get = async (
-    caminho: string,
-  ): Promise<{ [key: string]: string | number | null }[]> =>
+  get = async (caminho: string): Promise<interfaceRecurso[]> =>
     new Promise((resposta, erro) => {
       try {
         get(this.#montarUrl(caminho), this.#cabecalho())
@@ -83,7 +83,7 @@ class API {
 
   //retorna um consulta de graphql
   //Entradas query de consulta e indicar se será feito sem senha
-  graphql = (query: string, publico?: boolean): Promise<objetoGrapql | null> =>
+  graphql = (query: string, publico?: boolean): Promise<objetoGrapql> =>
     new Promise((resposta, erro) => {
       try {
         //remover espaços

@@ -93,6 +93,7 @@ export default Vue.extend({
   },
   created: function () {
     //calcular a quantidade de páginas caso não tenha
+
     this.quantidadePaginas_ = this.quantidadePaginas
       ? this.quantidadePaginas
       : ((this.quantidadeRegistros / this.registrosPorPagina) | 0) +
@@ -138,7 +139,7 @@ export default Vue.extend({
   },
   methods: {
     irPara(pg: number) {
-      if (this.funcao) {
+      if (this.funcao && pg != this.value) {
         this.funcao(pg)
       }
       this.$emit('input', pg)

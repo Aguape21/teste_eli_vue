@@ -67,18 +67,27 @@ recursos
 
       <b-row>
         <b-col cols="12">
-          <eli-paginacao v-model="pagina"></eli-paginacao>
+          <eli-paginacao
+            v-model="pagina"
+            :quantidadeRegistros="paginacao.quantidadeRegistros"
+            :registrosPorPagina="paginacao.limit"
+            :funcao="paginacao.funcao"
+          ></eli-paginacao>
         </b-col>
       </b-row>
     </div>
   </v-container>
 </template>
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
 
 import eli_barraNavegacao from '@/componentes/ferramentas/eli-barraNavegacao.vue'
 import eli_celula from '@/componentes/ferramentas/tabela-consulta/eli-celula.vue'
 import eli_paginacao from '@/componentes/ferramentas/eli-paginacao.vue'
+import {
+  interfaceColuna,
+  interfacePaginacaoConsulta,
+} from '@/componentes/interfacesParaComponentes'
 
 export default Vue.extend({
   components: {
@@ -86,11 +95,18 @@ export default Vue.extend({
     'eli-celula': eli_celula,
     'eli-paginacao': eli_paginacao,
   },
-  props: { value: String, linhas: Array, colunas: Array },
-  data: function () {
-    return { pagina: 99 as number }
+  props: {
+    value: String,
+    linhas: Array,
+    colunas: Array as PropType<interfaceColuna[]>,
+    paginacao: Object as PropType<interfacePaginacaoConsulta>,
   },
-  //created: function () {},
+  data: function () {
+    return { pagina: 0 as number }
+  },
+  created: function () {
+        this.pagina = ((this.paginacao.offset || 0) / this.paginacao.limit) | 0
+  },
   methods: {
     atualizarVModel() {
       this.$emit('input', this.value)
