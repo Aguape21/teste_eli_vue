@@ -1,0 +1,1 @@
+Arquivos TS para uso geral na aplicação

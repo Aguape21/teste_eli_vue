@@ -1,6 +1,6 @@
 //Recurso padrão para classes relacionadas à recursos
 
-import api from '@/plugins/api'
+import api from '@/ts/api'
 
 interface interfaceRecurso {
   [key: string]: string | number | null | undefined | string[]

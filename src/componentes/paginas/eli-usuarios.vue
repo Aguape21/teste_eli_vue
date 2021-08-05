@@ -5,6 +5,10 @@
       :linhas="linhas"
       :colunas="colunas"
       :paginacao="paginacao"
+      :funcaoNovoFiltro="atualizarNovosFiltros"
+      :funcaoNovaPagina="atualizarMudancaPagina"
+      :filtros_busca="filtros_busca"
+      :filtrosAplicados="filtrosAplicados"
     ></eli-panelConsulta>
   </eli-baseMenuPainel>
 </template>
@@ -17,14 +21,19 @@ import {
   interfaceColuna,
   interfacePaginacaoConsulta,
   interfaceFiltroUrl,
-} from '@/componentes/interfacesParaComponentes'
-import api from '@/plugins/api'
+} from '@/ts/interfacesParaComponentes'
+import api from '@/ts/api'
 import { router } from '@/rotas/rotas'
 
-const registrosPorPagina = 1
+const registrosPorPagina = 15
 
 import Vue from 'vue'
 import { interfaceUsuarios } from '@/modelos/esquemasRecursos'
+import {
+  tiposCondicao,
+  interfaceFiltro,
+  condicaoParaQGraphql,
+} from '@/ts/filtros'
 export default Vue.extend({
   components: {
     'eli-baseMenuPainel': eli_baseMenuPainel,
@@ -60,6 +69,26 @@ export default Vue.extend({
       },
     ] as interfaceColuna[],
     paginacao: {} as interfacePaginacaoConsulta,
+    filtros_busca: [
+      {
+        coluna: 'nome',
+        condicao: tiposCondicao.CONTEM_OU,
+      },
+      {
+        coluna: 'email',
+        condicao: tiposCondicao.CONTEM_OU,
+      },
+      {
+        coluna: 'cargo',
+        condicao: tiposCondicao.CONTEM_OU,
+      },
+      {
+        coluna: 'telefone',
+        condicao: tiposCondicao.CONTEM_OU,
+      },
+    ] as interfaceFiltro[],
+
+    filtrosAplicados: [] as interfaceFiltro[],
   }),
 
   created: function () {
@@ -75,12 +104,17 @@ export default Vue.extend({
           ? JSON.parse(this.$route.params.filtrosUsuarios)
           : {}
 
+      this.filtrosAplicados = filtrosUsuarios.filtros || []
+
       const busca = await api.graphql(`
 
       {
           usuarios_varios
-          (offset:${filtrosUsuarios.offset || 0}, 
-          limit:${registrosPorPagina})
+          ( 
+            ${condicaoParaQGraphql(this.filtrosAplicados, true)}
+            offset:${filtrosUsuarios.offset || 0}, 
+            limit:${registrosPorPagina}
+          )
           {
             codigo_corporativo,
             codigo
@@ -95,7 +129,11 @@ export default Vue.extend({
             cadastros_base
             data_hora_inclusao
           }
-            usuarios_contar
+            usuarios_contar${
+              condicaoParaQGraphql(filtrosUsuarios.filtros) == ''
+                ? ''
+                : '(' + condicaoParaQGraphql(filtrosUsuarios.filtros) + ')'
+            }
           }
       `)
 
@@ -109,25 +147,48 @@ export default Vue.extend({
         quantidadeRegistros: busca.usuarios_contar,
         offset: filtrosUsuarios.offset || 0,
         limit: registrosPorPagina,
-        //ação de navegação ao clicar na páginação
-        funcao: (pagina) => {
-          router.push({
-            name: 'usuarios',
-            params: {
-              filtrosUsuarios: JSON.stringify({
-                offset: pagina * registrosPorPagina,
-              }),
-            },
-          })
-        },
       }
+    },
+
+    atualizarMudancaPagina(pagina: number) {
+      const filtrosUsuarios: interfaceFiltroUrl =
+        this.$route.params.filtrosUsuarios &&
+        this.$route.params.filtrosUsuarios != ''
+          ? JSON.parse(this.$route.params.filtrosUsuarios)
+          : {}
+
+      filtrosUsuarios.offset = pagina * registrosPorPagina
+
+      router.push({
+        name: 'usuarios',
+        params: {
+          filtrosUsuarios: JSON.stringify(filtrosUsuarios),
+        },
+      })
+    },
+
+    atualizarNovosFiltros(filtros: interfaceFiltro[]) {
+      const filtrosUsuarios: interfaceFiltroUrl =
+        this.$route.params.filtrosUsuarios &&
+        this.$route.params.filtrosUsuarios != ''
+          ? JSON.parse(this.$route.params.filtrosUsuarios)
+          : {}
+
+      filtrosUsuarios.offset = 0
+      filtrosUsuarios.filtros = filtros
+
+      router.push({
+        name: 'usuarios',
+        params: {
+          filtrosUsuarios: JSON.stringify(filtrosUsuarios),
+        },
+      })
     },
   },
 
   watch: {
     '$route.params.filtrosUsuarios': function () {
-            this.carregando(this.listar())
-
+      this.carregando(this.listar())
     },
   },
 })

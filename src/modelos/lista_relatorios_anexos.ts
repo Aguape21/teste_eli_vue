@@ -3,7 +3,7 @@
 import {ClasseListaRelatoriosAnexos} from '@/modelos/esquemasRecursos'
 import { interfaceRecurso } from '@/modelos/recurso'
 import { baixar } from '@/plugins/http'
-import api from '@/plugins/api'
+import api from '@/ts/api'
 
 export default class ListaRelatoriosAnexos extends ClasseListaRelatoriosAnexos {
   recurso = 'lista_relatorios_anexos'

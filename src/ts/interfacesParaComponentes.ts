@@ -2,6 +2,9 @@
     Registro de intefaces que serão utulizadas apenas em componentes
 */
 
+
+import {interfaceFiltro} from '@/ts/filtros'
+
 //define os tipos de celuas para tabelas
 enum tipoColunas {
   texto = 'texto',
@@ -22,10 +25,10 @@ export interface interfacePaginacaoConsulta {
   quantidadeRegistros: number
   limit: number
   offset?: number
-  funcao: (pagina: number) => void
 }
 
 //estrutura de filtro de url
 export interface interfaceFiltroUrl {
   offset?: number
+  filtros?: interfaceFiltro[]
 }

@@ -92,57 +92,72 @@ export default Vue.extend({
     }
   },
   created: function () {
-    //calcular a quantidade de páginas caso não tenha
-
-    this.quantidadePaginas_ = this.quantidadePaginas
-      ? this.quantidadePaginas
-      : ((this.quantidadeRegistros / this.registrosPorPagina) | 0) +
-        (this.quantidadeRegistros % this.registrosPorPagina ? 1 : 0)
-
-    //pegar valor da página atual
-    this.paginaAtual_ =
-      this.value < 0
-        ? 0
-        : this.value < this.quantidadePaginas_
-        ? this.value
-        : this.quantidadePaginas_ - 1
-
-    if (this.quantidadePaginas_ <= 11) {
-      this.listaPaginas = Array.from(Array(this.quantidadePaginas_).keys())
-    } else {
-      //montar array
-
-      let paginas_anterior = this.paginaAtual_ <= 3 ? this.paginaAtual_ : 3
-      let paginas_posterior =
-        this.quantidadePaginas_ - this.paginaAtual_ - 1 <= 3
-          ? this.quantidadePaginas_ - this.paginaAtual_ - 1
-          : 3
-
-      if (paginas_posterior < 3) {
-        paginas_anterior += 3 - paginas_posterior
-      }
-
-      if (paginas_anterior < 3) {
-        paginas_posterior += 3 - paginas_anterior
-      }
-
-      this.listaPaginas = [
-        ...Array.from(Array(paginas_anterior).keys())
-          .reverse()
-          .map((a) => this.paginaAtual_ - a - 1),
-        this.paginaAtual_,
-        ...Array.from(Array(paginas_posterior).keys()).map(
-          (a) => this.paginaAtual_ + a + 1,
-        ),
-      ]
-    }
+    this.contruirPaginacao()
   },
   methods: {
+    contruirPaginacao: function () {
+      //calcular a quantidade de páginas caso não tenha
+
+      this.quantidadePaginas_ = this.quantidadePaginas
+        ? this.quantidadePaginas
+        : ((this.quantidadeRegistros / this.registrosPorPagina) | 0) +
+          (this.quantidadeRegistros % this.registrosPorPagina ? 1 : 0)
+
+      //pegar valor da página atual
+      this.paginaAtual_ =
+        this.value < 0
+          ? 0
+          : this.value < this.quantidadePaginas_
+          ? this.value
+          : this.quantidadePaginas_ - 1
+
+      if (this.quantidadePaginas_ <= 11) {
+        this.listaPaginas = Array.from(Array(this.quantidadePaginas_).keys())
+      } else {
+        //montar array
+
+        let paginas_anterior = this.paginaAtual_ <= 3 ? this.paginaAtual_ : 3
+        let paginas_posterior =
+          this.quantidadePaginas_ - this.paginaAtual_ - 1 <= 3
+            ? this.quantidadePaginas_ - this.paginaAtual_ - 1
+            : 3
+
+        if (paginas_posterior < 3) {
+          paginas_anterior += 3 - paginas_posterior
+        }
+
+        if (paginas_anterior < 3) {
+          paginas_posterior += 3 - paginas_anterior
+        }
+
+        this.listaPaginas = [
+          ...Array.from(Array(paginas_anterior).keys())
+            .reverse()
+            .map((a) => this.paginaAtual_ - a - 1),
+          this.paginaAtual_,
+          ...Array.from(Array(paginas_posterior).keys()).map(
+            (a) => this.paginaAtual_ + a + 1,
+          ),
+        ]
+      }
+    },
     irPara(pg: number) {
       if (this.funcao && pg != this.value) {
         this.funcao(pg)
       }
       this.$emit('input', pg)
+    },
+  },
+
+  watch: {
+    quantidadePaginas_: function () {
+      this.contruirPaginacao()
+    },
+    quantidadePaginas: function () {
+      this.contruirPaginacao()
+    },
+    quantidadeRegistros: function () {
+      this.contruirPaginacao()
     },
   },
 })
