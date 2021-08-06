@@ -15,19 +15,19 @@
       <p>
         <a
           target="_blank"
-          href="https://api.whatsapp.com/send?phone=5548999482983&text=Estou%20usando%20o%20%F0%9F%8C%B1%20e-licencie%20e%20preciso%20de%20suporte%20para%20..."
+          :href="links.whatsApp.link"
           alt="Clique para Chamar no WhatsApp"
         >
           <oh-icon name="bi-whatsapp" scale="1.5" />
         </a>
 
-        <a target="_blank" alt="Clique que ligar" href="tel:+5548999482983">
+        <a target="_blank" alt="Clique que ligar" :href="links.telefone.link">
           <oh-icon name="ri-cellphone-fill" scale="1.5" />
         </a>
 
         <a
           target="_blank"
-          href=" mailto:contato@e-licencie.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20suporte%20para%20o%20software%20%F0%9F%8C%B1%20e-licencie&body=Preciso%20de%20suporte%20para%20... "
+          :href="links.email.link"
           alt="Clique para enviar um e-mail"
         >
           <oh-icon name="md-email-outlined" scale="1.5" />
