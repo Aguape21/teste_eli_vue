@@ -8,7 +8,7 @@ Modelo padrão de componente
     <b-input-group-append>
       <b-button
         @click="$emit('filtrarPelaCaixaDeBusca', valorBusca)"
-        variant="primary"
+        variant="outline-primary"
       >
         <oh-icon name="co-search" />
       </b-button>
