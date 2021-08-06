@@ -5,15 +5,11 @@
       <p>2018-{{ ano }} © Azteca Software LTDA</p>
       <p>
         <b>
-          <eli-linkModalIframe
-            texto="Politica de Privacidade"
-            link="https://e-licencie.com.br/legal/politica-de-privacidade.html"
-          />
+          <a @click="abrirIframe('politicaPrivacidade')">
+            Politica de Privacidade
+          </a>
           |
-          <eli-linkModalIframe
-            texto="Termos de Uso"
-            link="https://e-licencie.com.br/legal/termo-de-uso-site.html"
-          />
+          <a @click="abrirIframe('termosDeUso')">Termos de Uso</a>
         </b>
       </p>
       <p>
@@ -43,18 +39,18 @@
 
 <script lang="ts">
 import eli_logo from '@/componentes/ferramentas/eli-logo.vue'
-import eli_linkModalIframe from '@/componentes/ferramentas/eli-linkModalIframe.vue'
+import links from '@/ts/linksEContatos'
 
 import Vue from 'vue'
 export default Vue.extend({
   components: {
     'eli-logo': eli_logo,
-    'eli-linkModalIframe': eli_linkModalIframe,
   },
 
   data: function () {
     return {
       ano: '',
+      links,
     }
   },
   created: function () {
@@ -62,7 +58,11 @@ export default Vue.extend({
   },
 
   methods: {
-    //teste() {},
+    abrirIframe(iframe: string) {
+      const query = { ...this.$route.query }
+      query.iframe = iframe
+      this.$router.replace({ query: query })
+    },
   },
 })
 </script>
