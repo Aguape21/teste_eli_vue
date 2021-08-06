@@ -43,29 +43,30 @@ recursos
               ></eli-celula>
             </b-col>
           </b-row>
+
+          <b-collapse :id="'acoes-' + linha.codigo">
+            <b-row>
+              <b-col class="linhaAcoes" align-self="end" cols="12">
+                <b-button-group>
+                  <b-button variant="success">Success</b-button>
+                  <b-button variant="info">Info</b-button>
+                  <b-button variant="warning">Warning</b-button>
+                  <b-button variant="success">Success</b-button>
+                  <b-button variant="info">Info</b-button>
+                </b-button-group>
+              </b-col>
+            </b-row>
+          </b-collapse>
         </b-col>
 
-        <b-col cols="12" sm="2" md="1">
-          <b-button v-b-toggle="'acoes-' + linha.codigo" variant="primary">
+        <b-col class="botaoAcao" cols="12" sm="2" md="1">
+          <b-button
+            v-b-toggle="'acoes-' + linha.codigo"
+            variant="outline-primary"
+          >
             <oh-icon name="fa-share-square" />
           </b-button>
         </b-col>
-
-        <b-collapse :id="'acoes-' + linha.codigo">
-          <b-col cols="12">
-            <b-button-group>
-              <b-button variant="success">Success</b-button>
-              <b-button variant="info">Info</b-button>
-              <b-button variant="warning">Warning</b-button>
-              <b-button variant="success">Success</b-button>
-              <b-button variant="info">Info</b-button>
-              <b-button variant="warning">Warning</b-button>
-              <b-button variant="success">Success</b-button>
-              <b-button variant="info">Info</b-button>
-              <b-button variant="warning">Warning</b-button>
-            </b-button-group>
-          </b-col>
-        </b-collapse>
       </b-row>
 
       <b-row>
@@ -150,4 +151,17 @@ export default Vue.extend({
   },
 })
 </script>
-<style scoped></style>
+<style scoped>
+.linhaAcoes {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+}
+.botaoAcao {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+}
+</style>
