@@ -1,5 +1,5 @@
 <template>
-  <b-modal size="lg" v-model="modalShow">
+  <b-modal @hidden="sair" size="lg" v-model="modalShow">
     <template #modal-title>
       {{ link.texto }}
     </template>

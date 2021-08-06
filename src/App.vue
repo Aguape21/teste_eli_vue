@@ -5,7 +5,10 @@
         <p>Oi!</p>
       </component>
     </router-view>
-
+<!-- 
+Todos componentes de modal são chamados pelas querys de URL
+de qualquer parte e são declarados aqui
+  -->
     <eli-modalIframame v-if="$route.query.iframe"></eli-modalIframame>
 
   </div>
