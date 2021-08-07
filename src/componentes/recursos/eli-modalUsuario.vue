@@ -8,8 +8,7 @@
   >
     <b-row>
       <eli-texto
-      
-
+      :titulo="usuario.meta.nome.comment"
 
        v-model="usuario.nome"></eli-texto>
     </b-row>
@@ -50,7 +49,6 @@ export default Vue.extend({
         const objeto = JSON.parse(this.valor || '')
         this.usuario.objeto = objeto
       }
-     // await this.usuario.baixarMeta()
 
       this.verModal = true
     },

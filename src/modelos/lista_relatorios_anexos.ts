@@ -6,12 +6,11 @@ import { baixar } from '@/plugins/http'
 import api from '@/ts/api'
 
 export default class ListaRelatoriosAnexos extends ClasseListaRelatoriosAnexos {
-  recurso = 'lista_relatorios_anexos'
   colunas =
     'codigo titulo codigo_corporativo codigo_anexo nome_arquivo descricao observacao ordem'
 
   constructor(objeto?: interfaceRecurso) {
-    super(objeto)
+    super('lista_relatorios_anexos',objeto)
   }
 
   baixar = (novaGuia?: boolean): Promise<boolean> => {

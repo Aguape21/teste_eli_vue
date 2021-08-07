@@ -5,7 +5,6 @@ import api from '@/ts/api'
 import autenticacao from '@/plugins/autenticacao'
 
 export default class Usuarios extends ClasseUsuarios {
-  recurso = 'usuarios'
 
   bearer = ''
 
@@ -23,7 +22,7 @@ export default class Usuarios extends ClasseUsuarios {
 `
 
   constructor(objeto?: interfaceUsuarios) {
-    super(objeto)
+    super('usuarios', objeto)
   }
 
   //Baixa/abre um recuros pelo código
@@ -34,7 +33,7 @@ export default class Usuarios extends ClasseUsuarios {
     })
 
     this.objeto = r[0]
-    this.bearer = ((r[0].bearer)?.toString()) || ''
+    this.bearer = r[0].bearer?.toString() || ''
 
     //gravar dados de autenticação
     autenticacao.gravar(
@@ -44,5 +43,3 @@ export default class Usuarios extends ClasseUsuarios {
     )
   }
 }
-
-

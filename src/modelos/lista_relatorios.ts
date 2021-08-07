@@ -5,7 +5,7 @@ import { interfaceRecurso } from '@/modelos/recurso'
 import { baixar } from '@/plugins/http'
 
 export default class ListaRelatorios extends ClasseListaRelatorios {
-  recurso = 'lista_relatorios'
+
   colunas = ` codigo
                 codigo_corporativo
                 descricao
@@ -17,7 +17,7 @@ export default class ListaRelatorios extends ClasseListaRelatorios {
 `
 
   constructor(objeto?:interfaceRecurso) {
-    super(objeto)
+    super('lista_relatorios',objeto)
   }
 
   baixar = (novaGuia?:boolean) : Promise<boolean>  => {
