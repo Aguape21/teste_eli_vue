@@ -1,6 +1,6 @@
 //Conexão com o recurso de relatórios
 
-import {ClasseListaRelatoriosAnexos} from '@/modelos/esquemasRecursos'
+import { ClasseListaRelatoriosAnexos } from '@/modelos/esquemasRecursos'
 import { interfaceRecurso } from '@/modelos/recurso'
 import { baixar } from '@/plugins/http'
 import api from '@/ts/api'
@@ -14,7 +14,7 @@ export default class ListaRelatoriosAnexos extends ClasseListaRelatoriosAnexos {
     super(objeto)
   }
 
-  baixar = (novaGuia?: boolean):Promise<boolean>  => {
+  baixar = (novaGuia?: boolean): Promise<boolean> => {
     const url =
       'https://azteca.s3.us-east-1.amazonaws.com/anexos/' +
       this.objeto.codigo_corporativo +
@@ -24,14 +24,15 @@ export default class ListaRelatoriosAnexos extends ClasseListaRelatoriosAnexos {
   }
 
   extensao(): string {
-
     const re = /((\.\w{1,4})?(\.\w+))$/gm
     const exe = re.exec((this.objeto.nome_arquivo || '').toString())
     return exe ? exe[0] : '.bin'
   }
 }
 
-const abrirVariosPorCodigo = async (codigos: string[]):Promise<ListaRelatoriosAnexos[]>  => {
+const abrirVariosPorCodigo = async (
+  codigos: string[],
+): Promise<ListaRelatoriosAnexos[]> => {
   const query =
     '{' +
     codigos

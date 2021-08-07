@@ -3,7 +3,7 @@ Modelo padrão de componente
 -->
 
 <template>
-  <b-input-group class="mt-3">
+  <b-input-group>
     <b-form-input v-model="valorBusca"></b-form-input>
     <b-input-group-append>
       <b-button

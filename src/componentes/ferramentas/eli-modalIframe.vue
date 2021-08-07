@@ -1,52 +1,40 @@
 <template>
-  <b-modal @hidden="sair" size="lg" v-model="modalShow">
-    <template #modal-title>
-      {{ link.texto }}
-    </template>
+  <eli-modal
+    v-model="abrirModal"
+    :titulo="link.texto"
+    nome="iframe"
+    :funcaoCancelar="() => {}"
+  >
     <b-embed
       type="iframe"
       aspect="16by9"
       :src="link.link"
       allowfullscreen
     ></b-embed>
-
-    <template #modal-footer="{ ok }">
-      <b-button
-        variant="primary"
-        @click="
-          sair()
-          ok()
-        "
-      >
-        Certo
-      </b-button>
-    </template>
-  </b-modal>
+  </eli-modal>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import links from '@/ts/linksEContatos'
+import eli_modal from '@/componentes/ferramentas/eli-modal.vue'
 export default Vue.extend({
-  components: {},
+  components: {
+    'eli-modal': eli_modal,
+  },
   data: function () {
-    return { modalShow: false, links, link: {} }
+    return { abrirModal: false, links, link: {} }
   },
 
-  methods: {
-    sair() {
-      const query = { ...this.$route.query }
-      delete query.iframe
-      this.$router.replace({ query: query })
-    },
-  },
+  methods: {},
 
   created: function () {
+    console.log('Chegou')
     if (
       this.$route.query.iframe &&
       links[this.$route.query.iframe.toString()]
     ) {
       this.link = links[this.$route.query.iframe.toString()]
-      this.modalShow = true
+      this.abrirModal = true
     }
   },
 })

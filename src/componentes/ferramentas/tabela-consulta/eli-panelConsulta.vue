@@ -6,9 +6,9 @@ recursos
 -->
 
 <template>
-  <v-container style="min-height: 500px;" fluid class="grey lighten-4">
+  <v-container style="min-height: 500px;" fluid>
     <b-row>
-      <b-col cols="12" sm="6" md="8">
+      <b-col cols="12" sm="12" md="6">
         <eli-barraNavegacao></eli-barraNavegacao>
       </b-col>
 
@@ -17,6 +17,17 @@ recursos
           @filtrarPelaCaixaDeBusca="filtrarPelaCaixaDeBusca"
           :value="textoCaixaBusca"
         ></eli-caixaDeBusca>
+      </b-col>
+
+      <b-col cols="12" sm="6" md="2">
+        <b-button
+          @click="funcaoNovoRegistro()"
+          block
+          :disabled="!funcaoNovoRegistro"
+          variant="primary"
+        >
+          Novo
+        </b-button>
       </b-col>
     </b-row>
 
@@ -113,6 +124,8 @@ export default Vue.extend({
       (filtros: interfaceFiltro[]) => void
     >,
     funcaoNovaPagina: Function as PropType<(pagina: number) => void>,
+
+    funcaoNovoRegistro: Function as PropType<() => void>,
   },
   data: function () {
     return { pagina: 0 as number, textoCaixaBusca: '' }
@@ -148,6 +161,9 @@ export default Vue.extend({
         this.funcaoNovoFiltro([])
       }
     },
+
+
+
   },
 })
 </script>

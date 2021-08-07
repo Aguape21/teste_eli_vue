@@ -9,6 +9,7 @@
       :funcaoNovaPagina="atualizarMudancaPagina"
       :filtros_busca="filtros_busca"
       :filtrosAplicados="filtrosAplicados"
+      :funcaoNovoRegistro="()=>{}"
     ></eli-panelConsulta>
   </eli-baseMenuPainel>
 </template>
