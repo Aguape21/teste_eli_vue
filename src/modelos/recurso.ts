@@ -6,12 +6,22 @@ interface interfaceRecurso {
   [key: string]: string | number | null | undefined | string[]
 }
 
+interface interfaceMetaDados extends interfaceRecurso {
+  field?: string
+  size: string
+  null: string
+  key: string
+  comment: string
+}
+
 export { interfaceRecurso }
 
 export class Recurso {
   //indica o recurso da classe
   // usada para fazer as conexões com a API
   recurso = ''
+
+  meta: { [key: string]: interfaceMetaDados } = {}
 
   colunas: string | Array<string> = ''
 
@@ -52,6 +62,19 @@ export class Recurso {
     if (busca && busca[this.recurso]) {
       this.objeto = busca[this.recurso]
     }
+  }
+
+
+
+  baixarMeta = async (): Promise<{ [key: string]: interfaceMetaDados }> => {
+
+    if (Object.keys(this.meta).length == 0) {
+      const busca: any[] = await api.get(
+        'dados/metadados/recurso/' + this.recurso,
+      )
+      busca.forEach((a) => (this.meta[a.field] = a))
+    }
+    return this.meta
   }
 
   //Baixa/abre um recuros pelo código

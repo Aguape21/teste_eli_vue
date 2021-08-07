@@ -9,7 +9,13 @@
       :funcaoNovaPagina="atualizarMudancaPagina"
       :filtros_busca="filtros_busca"
       :filtrosAplicados="filtrosAplicados"
-      :funcaoNovoRegistro="()=>{}"
+      :funcaoNovoRegistro="
+        () => {
+          const query = { ...$route.query }
+          query.modalUsuario = '{}'
+          $router.replace({ query: query })
+        }
+      "
     ></eli-panelConsulta>
   </eli-baseMenuPainel>
 </template>

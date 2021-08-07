@@ -1,87 +1,60 @@
-<!--
-Modelo padrão de componente de modal
-
-Documentação
-https://bootstrap-vue.org/docs/components/modal
--->
-
 <template>
-  <b-modal
-    header-text-variant="light"
-    header-bg-variant="primary"
-    @hidden="sair"
-    size="lg"
+  <eli-modal
     v-model="verModal"
+    titulo="Editar Usuario"
+    :nome="nome"
+    :funcaoCancelar="() => {}"
+    :funcaoGravar="() => {}"
   >
-    <template #modal-title>
-      Usuário
-    </template>
+    <b-row>
+      <eli-texto
+      
 
-    Conteúdo!
-    <template #modal-footer="{ ok, cancel }">
-      <b-button
-        variant="danger"
-        @click="
-          cancel()
-          sair()
-        "
-      >
-        Cancelar
-      </b-button>
 
-      <b-button
-        variant="primary"
-        @click="
-          sair()
-          ok()
-        "
-      >
-        Gravar
-      </b-button>
-    </template>
-  </b-modal>
+       v-model="usuario.nome"></eli-texto>
+    </b-row>
+  </eli-modal>
 </template>
 <script lang="ts">
-import Vue from 'vue'
 import uuid from '@/plugins/uuid'
 import Usuarios from '@/modelos/usuarios'
-
+import Vue from 'vue'
+import eli_modal from '@/componentes/ferramentas/eli-modal.vue'
+import eli_texto from '@/componentes/formularios/eli-texto.vue'
 export default Vue.extend({
-  components: {},
-  props: {},
+  components: {
+    'eli-modal': eli_modal,
+    'eli-texto': eli_texto,
+  },
   data: function () {
     return {
       verModal: false,
       nome: 'modalUsuario',
       usuario: {} as Usuarios,
       valor: '' as string | null,
+      teste: '',
     }
   },
-  created: async function () {
+  created: function () {
     this.valor = this.$route.query[this.nome].toString()
 
     if (this.valor) {
-      this.abrirModal()
+      this.abrirUsuario()
     }
   },
   methods: {
-    sair() {
-      const query = { ...this.$route.query }
-      delete query[this.nome]
-      this.$router.replace({ query: query })
-    },
-
-    async abrirModal() {
+    async abrirUsuario() {
       if (uuid.validar(this.valor)) {
         await this.usuario.abrir(this.valor || '')
       } else {
         const objeto = JSON.parse(this.valor || '')
         this.usuario.objeto = objeto
       }
+     // await this.usuario.baixarMeta()
 
       this.verModal = true
     },
   },
 })
 </script>
-<style scoped></style>
+<style></style>
