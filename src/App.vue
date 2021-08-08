@@ -16,7 +16,7 @@ de qualquer parte e são declarados aqui
 
 <script lang="ts">
 import eli_modalIframame from '@/componentes/ferramentas/eli-modalIframe.vue'
-import eli_modalUsuario from '@/componentes/recursos/eli-modalUsuario.vue'
+import eli_modalUsuario from '@/componentes/paginas/eli-modalUsuario.vue'
 
 export default {
   name: 'App',

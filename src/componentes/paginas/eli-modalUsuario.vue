@@ -8,9 +8,10 @@
   >
     <b-row>
       <eli-texto
-      :titulo="usuario.meta.nome.comment"
-
-       v-model="usuario.nome"></eli-texto>
+        v-if="usuario"
+        :meta="usuario.meta.nome"
+        v-model="usuario.nome"
+      ></eli-texto>
     </b-row>
   </eli-modal>
 </template>
@@ -29,7 +30,7 @@ export default Vue.extend({
     return {
       verModal: false,
       nome: 'modalUsuario',
-      usuario: {} as Usuarios,
+      usuario: null as Usuarios | null,
       valor: '' as string | null,
       teste: '',
     }
@@ -43,6 +44,8 @@ export default Vue.extend({
   },
   methods: {
     async abrirUsuario() {
+      this.usuario = new Usuarios()
+
       if (uuid.validar(this.valor)) {
         await this.usuario.abrir(this.valor || '')
       } else {
