@@ -13,7 +13,6 @@ export class Recurso {
   //indica o recurso da classe
   // usada para fazer as conexões com a API
   recurso = ''
-  meta: { [key: string]: interfaceMetaDados } = {}
 
   colunas: string | Array<string> = ''
 
@@ -30,7 +29,6 @@ export class Recurso {
   constructor(recurso:string,  objeto?: interfaceRecurso) {
     this.objeto = objeto || {}
     this.recurso = recurso
-    carregarMetas(this.recurso).then((a) => (this.meta = a))
   }
 
   //Baixa/abre um recuros pelo código

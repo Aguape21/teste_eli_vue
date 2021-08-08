@@ -10,7 +10,7 @@ export default class ListaRelatoriosAnexos extends ClasseListaRelatoriosAnexos {
     'codigo titulo codigo_corporativo codigo_anexo nome_arquivo descricao observacao ordem'
 
   constructor(objeto?: interfaceRecurso) {
-    super('lista_relatorios_anexos',objeto)
+    super(objeto)
   }
 
   baixar = (novaGuia?: boolean): Promise<boolean> => {

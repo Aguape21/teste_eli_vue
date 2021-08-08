@@ -17,7 +17,7 @@ export default class ListaRelatorios extends ClasseListaRelatorios {
 `
 
   constructor(objeto?:interfaceRecurso) {
-    super('lista_relatorios',objeto)
+    super(objeto)
   }
 
   baixar = (novaGuia?:boolean) : Promise<boolean>  => {

@@ -22,7 +22,7 @@ export default class Usuarios extends ClasseUsuarios {
 `
 
   constructor(objeto?: interfaceUsuarios) {
-    super('usuarios', objeto)
+    super( objeto)
   }
 
   //Baixa/abre um recuros pelo código
