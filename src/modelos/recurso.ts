@@ -1,7 +1,6 @@
 //Recurso padrão para classes relacionadas à recursos
 
 import api from '@/ts/api'
-import { carregarMetas, interfaceMetaDados } from '@/ts/metadados'
 
 interface interfaceRecurso {
   [key: string]: string | number | null | undefined | string[]
