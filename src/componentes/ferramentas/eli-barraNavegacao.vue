@@ -20,8 +20,7 @@ Props:
   </b-breadcrumb>
 </template>
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+export default {
   components: {},
   props: {
     menus: {
@@ -46,16 +45,11 @@ export default Vue.extend({
       ],
     },
   },
-  data: function () {
+  data() {
     return { teste: true }
   },
-  created: function () {
-
-  },
   methods: {
-
-
   },
-})
+}
 </script>
 <style></style>
